@@ -3,8 +3,8 @@
 import argparse
 from pathlib import PurePosixPath, Path
 
-import core.tftp.argparse_utils as argparse_utils
-from core.tftp.tftp import TFTPClient, BLOCK_SIZE
+import core.utils.argparse_utils as argparse_utils
+from core.tftp import TFTPClient, BLOCK_SIZE
 
 
 def create_parser() -> argparse.ArgumentParser:
