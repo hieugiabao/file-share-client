@@ -2,7 +2,7 @@ from typing import Tuple, NewType
 
 BLOCK_SIZE = 512
 BUF_SIZE = 65536
-TIMEOUT = 0.5
+TIMEOUT = 1.5
 MAX_RETRIES = 10
 
 

@@ -6,7 +6,10 @@ from core.tftp.error.tftp_terminated_error import TFTPTerminatedError
 from core.tftp.header import *
 from typing import List, Tuple, Union, Dict
 
+from .error.tftp_error import TFTPError
+
 logger = logging.getLogger('tftpd')
+
 
 class TFTP:
     """
@@ -54,7 +57,7 @@ class TFTP:
         """
         opcode = data[0:2]
         if opcode == TFTPOpcodes.ERROR:
-            raise TFTPErrorCodes(
+            raise TFTPError(
                 int.from_bytes(data[2:4], byteorder='big'),
                 data[4:-1].decode('utf-8'))
         elif opcode not in expected_opcodes:
