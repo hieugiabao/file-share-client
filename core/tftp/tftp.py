@@ -7,6 +7,7 @@ from core.tftp.header import *
 from typing import List, Tuple, Union, Dict
 
 from .error.tftp_error import TFTPError
+from core.utils.checksum import checksum
 
 logger = logging.getLogger('tftpd')
 
@@ -122,18 +123,23 @@ class TFTP:
 
         if not handle_timeout:
             r = self._sock.recvfrom(BUF_SIZE)
-            return r
+        else:
+            retries = 0
+            while retries <= MAX_RETRIES:
+                try:
+                    r = self._sock.recvfrom(BUF_SIZE)
+                    break
+                except socket.timeout:
+                    retries += 1
+                    if retries <= MAX_RETRIES:
+                        self.__resend_last_packet()
+            if retries > MAX_RETRIES:
+                raise TFTPException('Timeout')
 
-        retries = 0
-        while retries <= MAX_RETRIES:
-            try:
-                r = self._sock.recvfrom(BUF_SIZE)
-                return r
-            except socket.timeout:
-                retries += 1
-                if retries <= MAX_RETRIES:
-                    self.__resend_last_packet()
-        raise TFTPException('Timed out')
+        if checksum(len(r[0]), r[0]) != b'\x00\x00':
+            raise TFTPError(TFTPErrorCodes.INVALID_CHECKSUM, TFTPErrorCodes.get_message(
+                TFTPErrorCodes.INVALID_CHECKSUM))
+        return (r[0][2:], r[1])
 
     def _recv_packet_mul(
         self, opcodes: List[bytes],
@@ -207,7 +213,8 @@ class TFTP:
         if addr is None:
             addr = self._addr
         self.__last_packet = Packet((data, addr))
-        self._sock.sendto(data, addr)
+        sum_check = checksum(len(data), data)
+        self._sock.sendto(sum_check + data, addr)
 
     def __resend_last_packet(self) -> None:
         """Resend the last packet received (used for retries in _recv())."""
@@ -327,6 +334,11 @@ class TFTP:
                         if len(data) < self._block_size:
                             self._send_ack(last_id)
                             return b''.join(parts)
+                except TFTPError as e:
+                    if e.error_id == TFTPErrorCodes.INVALID_CHECKSUM:
+                        break
+                    else:
+                        raise e
                 except socket.timeout:
                     if last_id == start_last_id:
                         retries += 1
@@ -365,6 +377,12 @@ class TFTP:
                             outer_block_id += 1
                         block_id = ack_block_id
                     break
+                except TFTPError as e:
+                    if e.error_id == TFTPErrorCodes.INVALID_CHECKSUM:
+                        self._terminate(
+                            TFTPError.INVALID_CHECKSUM, "Invalid checksum, last block sent: %d" % block_id)
+                    else:
+                        raise
                 except socket.timeout:
                     retries += 1
             else:

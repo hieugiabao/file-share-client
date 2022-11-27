@@ -11,6 +11,7 @@ class TFTPErrorCodes:
     FILE_EXISTS = 6
     NO_SUCH_USER = 7
     INVALID_OPTIONS = 8
+    INVALID_CHECKSUM = 9
 
     __MESSAGES = {
         UNKNOWN: '',
@@ -22,6 +23,7 @@ class TFTPErrorCodes:
         FILE_EXISTS: 'File already exists',
         NO_SUCH_USER: 'No such user',
         INVALID_OPTIONS: 'Invalid options specified',
+        INVALID_CHECKSUM: 'Invalid checksum'
     }
 
     @classmethod
@@ -32,4 +34,3 @@ class TFTPErrorCodes:
         :return: error message
         """
         return cls.__MESSAGES[error_code]
-

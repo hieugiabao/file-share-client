@@ -47,7 +47,7 @@ def main():
                 path = PurePosixPath(args.get).name
             # create directories 'received' if not exists
             Path('received').mkdir(parents=True, exist_ok=True)
-            
+
             path = './received/' + path
             Path(path).write_bytes(client.get_file(args.get))
         elif args.put:
