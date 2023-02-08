@@ -30,7 +30,7 @@ class Ui_Login(object):
         self.widget.setGeometry(QRect(10, -10, 471, 281))
         self.label_3 = QLabel(self.widget)
         self.label_3.setObjectName(u"label_3")
-        self.label_3.setGeometry(QRect(140, 20, 141, 101))
+        self.label_3.setGeometry(QRect(140, 20, 141, 71))
         font = QFont()
         font.setPointSize(30)
         font.setBold(True)
@@ -54,6 +54,10 @@ class Ui_Login(object):
         self.pushButton_2 = QPushButton(self.widget)
         self.pushButton_2.setObjectName(u"pushButton_2")
         self.pushButton_2.setGeometry(QRect(260, 210, 91, 24))
+        self.error_label = QLabel(self.widget)
+        self.error_label.setObjectName(u"error_label")
+        self.error_label.setGeometry(QRect(90, 90, 261, 21))
+        self.error_label.setStyleSheet(u"color: red;")
 
         self.retranslateUi(Login)
 
@@ -74,4 +78,5 @@ class Ui_Login(object):
             QCoreApplication.translate("Login", u"Login", None))
         self.pushButton_2.setText(QCoreApplication.translate(
             "Login", u"Go to Register", None))
+        self.error_label.setText("")
     # retranslateUi

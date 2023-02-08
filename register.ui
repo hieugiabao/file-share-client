@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <ui version="4.0">
- <class>Form</class>
- <widget class="QWidget" name="Form">
+ <class>Register</class>
+ <widget class="QWidget" name="Register">
   <property name="geometry">
    <rect>
     <x>0</x>
@@ -17,7 +17,7 @@
    <property name="geometry">
     <rect>
      <x>10</x>
-     <y>-10</y>
+     <y>0</y>
      <width>451</width>
      <height>311</height>
     </rect>
@@ -54,11 +54,11 @@
      <string>Full Name: </string>
     </property>
    </widget>
-   <widget class="QLineEdit" name="lineEdit">
+   <widget class="QLineEdit" name="full_name_text">
     <property name="geometry">
      <rect>
       <x>90</x>
-      <y>150</y>
+      <y>100</y>
       <width>261</width>
       <height>22</height>
      </rect>
@@ -68,7 +68,7 @@
     <property name="geometry">
      <rect>
       <x>20</x>
-      <y>150</y>
+      <y>140</y>
       <width>71</width>
       <height>16</height>
      </rect>
@@ -77,21 +77,21 @@
      <string>Username: </string>
     </property>
    </widget>
-   <widget class="QLineEdit" name="lineEdit_2">
+   <widget class="QLineEdit" name="username_text">
     <property name="geometry">
      <rect>
       <x>90</x>
-      <y>190</y>
+      <y>140</y>
       <width>261</width>
       <height>22</height>
      </rect>
     </property>
    </widget>
-   <widget class="QLineEdit" name="lineEdit_3">
+   <widget class="QLineEdit" name="password_text">
     <property name="geometry">
      <rect>
       <x>90</x>
-      <y>100</y>
+      <y>180</y>
       <width>261</width>
       <height>22</height>
      </rect>
@@ -110,7 +110,7 @@
     <property name="geometry">
      <rect>
       <x>20</x>
-      <y>190</y>
+      <y>180</y>
       <width>71</width>
       <height>16</height>
      </rect>
@@ -123,7 +123,7 @@
     <property name="geometry">
      <rect>
       <x>90</x>
-      <y>230</y>
+      <y>220</y>
       <width>75</width>
       <height>24</height>
      </rect>
@@ -136,13 +136,29 @@
     <property name="geometry">
      <rect>
       <x>270</x>
-      <y>230</y>
+      <y>220</y>
       <width>75</width>
       <height>24</height>
      </rect>
     </property>
     <property name="text">
      <string>Go to Login</string>
+    </property>
+   </widget>
+   <widget class="QLabel" name="error_label">
+    <property name="geometry">
+     <rect>
+      <x>90</x>
+      <y>70</y>
+      <width>261</width>
+      <height>16</height>
+     </rect>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">color: red;</string>
+    </property>
+    <property name="text">
+     <string/>
     </property>
    </widget>
   </widget>
