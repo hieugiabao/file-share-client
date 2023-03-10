@@ -691,18 +691,18 @@ class Ui_MainWindow(object):
         self.verticalLayout_8.setSpacing(0)
         self.verticalLayout_8.setObjectName(u"verticalLayout_8")
         self.verticalLayout_8.setContentsMargins(0, 0, 0, 0)
-        self.btn_home = QPushButton(self.topMenu)
-        self.btn_home.setObjectName(u"btn_home")
-        sizePolicy.setHeightForWidth(self.btn_home.sizePolicy().hasHeightForWidth())
-        self.btn_home.setSizePolicy(sizePolicy)
-        self.btn_home.setMinimumSize(QSize(0, 45))
-        self.btn_home.setFont(font)
-        self.btn_home.setCursor(QCursor(Qt.PointingHandCursor))
-        self.btn_home.setLayoutDirection(Qt.LeftToRight)
-        self.btn_home.setStyleSheet(u"background-image:\n"
-"                                        url(:/icons/images/icons/cil-home.png);")
+        self.btn_new = QPushButton(self.topMenu)
+        self.btn_new.setObjectName(u"btn_new")
+        sizePolicy.setHeightForWidth(self.btn_new.sizePolicy().hasHeightForWidth())
+        self.btn_new.setSizePolicy(sizePolicy)
+        self.btn_new.setMinimumSize(QSize(0, 45))
+        self.btn_new.setFont(font)
+        self.btn_new.setCursor(QCursor(Qt.PointingHandCursor))
+        self.btn_new.setLayoutDirection(Qt.LeftToRight)
+        self.btn_new.setStyleSheet(u"background-image:\n"
+"                                        url(:/icons/images/icons/cil-people.png);")
 
-        self.verticalLayout_8.addWidget(self.btn_home)
+        self.verticalLayout_8.addWidget(self.btn_new)
 
         self.btn_widgets = QPushButton(self.topMenu)
         self.btn_widgets.setObjectName(u"btn_widgets")
@@ -716,19 +716,6 @@ class Ui_MainWindow(object):
 "                                        url(:/icons/images/icons/cil-gamepad.png);")
 
         self.verticalLayout_8.addWidget(self.btn_widgets)
-
-        self.btn_new = QPushButton(self.topMenu)
-        self.btn_new.setObjectName(u"btn_new")
-        sizePolicy.setHeightForWidth(self.btn_new.sizePolicy().hasHeightForWidth())
-        self.btn_new.setSizePolicy(sizePolicy)
-        self.btn_new.setMinimumSize(QSize(0, 45))
-        self.btn_new.setFont(font)
-        self.btn_new.setCursor(QCursor(Qt.PointingHandCursor))
-        self.btn_new.setLayoutDirection(Qt.LeftToRight)
-        self.btn_new.setStyleSheet(u"background-image:\n"
-"                                        url(:/icons/images/icons/cil-people.png);")
-
-        self.verticalLayout_8.addWidget(self.btn_new)
 
         self.btn_save = QPushButton(self.topMenu)
         self.btn_save.setObjectName(u"btn_save")
@@ -1084,556 +1071,86 @@ class Ui_MainWindow(object):
         self.frame.setFrameShadow(QFrame.Raised)
         self.stackedWidget = QStackedWidget(self.frame)
         self.stackedWidget.setObjectName(u"stackedWidget")
-        self.stackedWidget.setGeometry(QRect(0, 10, 1178, 814))
-        self.stackedWidget.setMaximumSize(QSize(1178, 16777215))
+        self.stackedWidget.setGeometry(QRect(0, 10, 1280, 814))
+        self.stackedWidget.setMaximumSize(QSize(1360, 16777215))
         self.stackedWidget.setLayoutDirection(Qt.LeftToRight)
         self.stackedWidget.setStyleSheet(u"background: transparent;")
-        self.home = QWidget()
-        self.home.setObjectName(u"home")
-        self.home.setStyleSheet(u"")
-        self.scrollArea_2 = QScrollArea(self.home)
-        self.scrollArea_2.setObjectName(u"scrollArea_2")
-        self.scrollArea_2.setGeometry(QRect(-1, -1, 1171, 591))
-        self.scrollArea_2.setHorizontalScrollBarPolicy(Qt.ScrollBarAlwaysOff)
-        self.scrollArea_2.setWidgetResizable(False)
-        self.scrollAreaWidgetContents_2 = QWidget()
-        self.scrollAreaWidgetContents_2.setObjectName(u"scrollAreaWidgetContents_2")
-        self.scrollAreaWidgetContents_2.setGeometry(QRect(0, 0, 1169, 1500))
-        self.scrollAreaWidgetContents_2.setStyleSheet(u"height: auto;")
-        self.gridLayoutWidget = QWidget(self.scrollAreaWidgetContents_2)
-        self.gridLayoutWidget.setObjectName(u"gridLayoutWidget")
-        self.gridLayoutWidget.setGeometry(QRect(0, 0, 1171, 1141))
-        self.gridLayout_5 = QGridLayout(self.gridLayoutWidget)
-        self.gridLayout_5.setObjectName(u"gridLayout_5")
-        self.gridLayout_5.setHorizontalSpacing(6)
-        self.gridLayout_5.setVerticalSpacing(15)
-        self.gridLayout_5.setContentsMargins(0, 0, 0, 0)
-        self.group_23 = QFrame(self.gridLayoutWidget)
-        self.group_23.setObjectName(u"group_23")
-        self.group_23.setEnabled(True)
-        self.group_23.setMaximumSize(QSize(250, 250))
-        self.group_23.setCursor(QCursor(Qt.PointingHandCursor))
-        self.group_23.setStyleSheet(u"border: 1px solid\n"
-"                                                              #999;\n"
-"                                                              border-radius: 3px;\n"
-"                                                              background-color: rgb(38, 42, 50);")
-        self.group_23.setFrameShape(QFrame.StyledPanel)
-        self.group_23.setFrameShadow(QFrame.Raised)
-        self.pushButton_26 = QPushButton(self.group_23)
-        self.pushButton_26.setObjectName(u"pushButton_26")
-        self.pushButton_26.setGeometry(QRect(210, 10, 31, 24))
-        self.pushButton_26.setStyleSheet(u"border: none;\n"
-"                                                                background-image:\n"
-"                                                                url(:/icons/images/icons/cil-options-horizontal.png);\n"
-"                                                                background-repeat: none;\n"
-"                                                                background-position: center;")
-        self.label_46 = QLabel(self.group_23)
-        self.label_46.setObjectName(u"label_46")
-        self.label_46.setGeometry(QRect(10, 180, 231, 51))
-        font4 = QFont()
-        font4.setFamilies([u"Segoe UI"])
-        font4.setBold(False)
-        font4.setItalic(False)
-        self.label_46.setFont(font4)
-        self.label_46.setMouseTracking(True)
-        self.label_46.setStyleSheet(u"border: none;\n"
-"                                                                text-align: center;\n"
-"                                                                font-size: 16px;")
-        self.label_46.setTextFormat(Qt.AutoText)
-        self.label_46.setScaledContents(True)
-        self.label_46.setAlignment(Qt.AlignCenter)
-        self.label_47 = QLabel(self.group_23)
-        self.label_47.setObjectName(u"label_47")
-        self.label_47.setGeometry(QRect(60, 60, 120, 120))
-        self.label_47.setStyleSheet(u"border: none")
-        self.label_47.setPixmap(QPixmap(u"\n"
-"                                                                :/images/images/images/PyDracula.png"))
-        self.label_47.setScaledContents(True)
+        self.new_page = QWidget()
+        self.new_page.setObjectName(u"new_page")
+        self.new_page.setContextMenuPolicy(Qt.DefaultContextMenu)
+        self.new_page.setLayoutDirection(Qt.LeftToRight)
+        self.new_page.setAutoFillBackground(False)
+        self.verticalLayout_20 = QVBoxLayout(self.new_page)
+        self.verticalLayout_20.setObjectName(u"verticalLayout_20")
+        self.verticalLayout_20.setSizeConstraint(QLayout.SetDefaultConstraint)
+        self.widget_2 = QWidget(self.new_page)
+        self.widget_2.setObjectName(u"widget_2")
+        self.widget_2.setEnabled(True)
+        self.widget_2.setMaximumSize(QSize(1280, 50))
+        self.widget_2.setLayoutDirection(Qt.RightToLeft)
+        self.label = QLabel(self.widget_2)
+        self.label.setObjectName(u"label")
+        self.label.setGeometry(QRect(10, 10, 81, 31))
+        self.label.setStyleSheet(u"font-weight: 700;\n"
+"                                                          font-size: 24px;")
+        self.pushButton_3 = QPushButton(self.widget_2)
+        self.pushButton_3.setObjectName(u"pushButton_3")
+        self.pushButton_3.setGeometry(QRect(1010, 10, 221, 31))
+        self.pushButton_3.setLayoutDirection(Qt.LeftToRight)
+        self.pushButton_3.setStyleSheet(u"padding-left: 20px;\n"
+"                                                          background-image:\n"
+"                                                          url(:/icons/images/icons/cil-user-follow.png);\n"
+"                                                          background-origin: content;\n"
+"                                                          background-repeat: no-repeat;\n"
+"                                                          background-position: left center;")
+        self.pushButton_3.setAutoDefault(False)
+        self.pushButton_4 = QPushButton(self.widget_2)
+        self.pushButton_4.setObjectName(u"pushButton_4")
+        self.pushButton_4.setGeometry(QRect(970, 10, 31, 31))
+        self.pushButton_4.setStyleSheet(u"border: none;\n"
+"                                                          background-image:\n"
+"                                                          url(:/icons/images/icons/cil-settings.png);\n"
+"                                                          background-repeat: none;\n"
+"                                                          background-position: center;")
 
-        self.gridLayout_5.addWidget(self.group_23, 2, 2, 1, 1)
+        self.verticalLayout_20.addWidget(self.widget_2)
 
-        self.group_7 = QFrame(self.gridLayoutWidget)
-        self.group_7.setObjectName(u"group_7")
-        self.group_7.setEnabled(True)
-        self.group_7.setMaximumSize(QSize(250, 250))
-        self.group_7.setCursor(QCursor(Qt.PointingHandCursor))
-        self.group_7.setStyleSheet(u"border: 1px solid\n"
-"                                                              #999;\n"
-"                                                              border-radius: 3px;\n"
-"                                                              background-color: rgb(38, 42, 50);")
-        self.group_7.setFrameShape(QFrame.StyledPanel)
-        self.group_7.setFrameShadow(QFrame.Raised)
-        self.pushButton_10 = QPushButton(self.group_7)
-        self.pushButton_10.setObjectName(u"pushButton_10")
-        self.pushButton_10.setGeometry(QRect(210, 10, 31, 24))
-        self.pushButton_10.setStyleSheet(u"border: none;\n"
-"                                                                background-image:\n"
-"                                                                url(:/icons/images/icons/cil-options-horizontal.png);\n"
-"                                                                background-repeat: none;\n"
-"                                                                background-position: center;")
-        self.label_14 = QLabel(self.group_7)
-        self.label_14.setObjectName(u"label_14")
-        self.label_14.setGeometry(QRect(10, 180, 231, 51))
-        self.label_14.setFont(font4)
-        self.label_14.setMouseTracking(True)
-        self.label_14.setStyleSheet(u"border: none;\n"
-"                                                                text-align: center;\n"
-"                                                                font-size: 16px;")
-        self.label_14.setTextFormat(Qt.AutoText)
-        self.label_14.setScaledContents(True)
-        self.label_14.setAlignment(Qt.AlignCenter)
-        self.label_15 = QLabel(self.group_7)
-        self.label_15.setObjectName(u"label_15")
-        self.label_15.setGeometry(QRect(60, 60, 120, 120))
-        self.label_15.setStyleSheet(u"border: none")
-        self.label_15.setPixmap(QPixmap(u"\n"
-"                                                                :/images/images/images/PyDracula.png"))
-        self.label_15.setScaledContents(True)
+        self.frame_2 = QFrame(self.new_page)
+        self.frame_2.setObjectName(u"frame_2")
+        self.frame_2.setFrameShape(QFrame.StyledPanel)
+        self.frame_2.setFrameShadow(QFrame.Raised)
+        self.scrollArea_3 = QScrollArea(self.frame_2)
+        self.scrollArea_3.setObjectName(u"scrollArea_3")
+        self.scrollArea_3.setGeometry(QRect(0, 0, 1260, 520))
+        sizePolicy3 = QSizePolicy(QSizePolicy.Preferred, QSizePolicy.Preferred)
+        sizePolicy3.setHorizontalStretch(0)
+        sizePolicy3.setVerticalStretch(0)
+        sizePolicy3.setHeightForWidth(self.scrollArea_3.sizePolicy().hasHeightForWidth())
+        self.scrollArea_3.setSizePolicy(sizePolicy3)
+        self.scrollArea_3.setMouseTracking(False)
+        self.scrollArea_3.setTabletTracking(False)
+        self.scrollArea_3.setAcceptDrops(False)
+        self.scrollArea_3.setStyleSheet(u"border: none;")
+        self.scrollArea_3.setHorizontalScrollBarPolicy(Qt.ScrollBarAlwaysOff)
+        self.scrollArea_3.setSizeAdjustPolicy(QAbstractScrollArea.AdjustToContents)
+        self.scrollArea_3.setWidgetResizable(True)
+        self.scrollAreaWidgetContents_3 = QWidget()
+        self.scrollAreaWidgetContents_3.setObjectName(u"scrollAreaWidgetContents_3")
+        self.scrollAreaWidgetContents_3.setGeometry(QRect(0, 0, 1260, 520))
+        self.scrollAreaWidgetContents_3.setMinimumSize(QSize(0, 320))
+        self.scrollAreaWidgetContents_3.setStyleSheet(u"")
+        self.gridLayoutWidget_2 = QWidget(self.scrollAreaWidgetContents_3)
+        self.gridLayoutWidget_2.setObjectName(u"gridLayoutWidget_2")
+        self.gridLayoutWidget_2.setGeometry(QRect(0, 0, 1191, 521))
+        self.gridLayout_3 = QGridLayout(self.gridLayoutWidget_2)
+        self.gridLayout_3.setSpacing(0)
+        self.gridLayout_3.setObjectName(u"gridLayout_3")
+        self.gridLayout_3.setContentsMargins(0, 0, 0, 0)
+        self.scrollArea_3.setWidget(self.scrollAreaWidgetContents_3)
 
-        self.gridLayout_5.addWidget(self.group_7, 1, 0, 1, 1)
+        self.verticalLayout_20.addWidget(self.frame_2)
 
-        self.group_24 = QFrame(self.gridLayoutWidget)
-        self.group_24.setObjectName(u"group_24")
-        self.group_24.setEnabled(True)
-        self.group_24.setMaximumSize(QSize(250, 250))
-        self.group_24.setCursor(QCursor(Qt.PointingHandCursor))
-        self.group_24.setStyleSheet(u"border: 1px solid\n"
-"                                                              #999;\n"
-"                                                              border-radius: 3px;\n"
-"                                                              background-color: rgb(38, 42, 50);")
-        self.group_24.setFrameShape(QFrame.StyledPanel)
-        self.group_24.setFrameShadow(QFrame.Raised)
-        self.pushButton_27 = QPushButton(self.group_24)
-        self.pushButton_27.setObjectName(u"pushButton_27")
-        self.pushButton_27.setGeometry(QRect(210, 10, 31, 24))
-        self.pushButton_27.setStyleSheet(u"border: none;\n"
-"                                                                background-image:\n"
-"                                                                url(:/icons/images/icons/cil-options-horizontal.png);\n"
-"                                                                background-repeat: none;\n"
-"                                                                background-position: center;")
-        self.label_48 = QLabel(self.group_24)
-        self.label_48.setObjectName(u"label_48")
-        self.label_48.setGeometry(QRect(10, 180, 231, 51))
-        self.label_48.setFont(font4)
-        self.label_48.setMouseTracking(True)
-        self.label_48.setStyleSheet(u"border: none;\n"
-"                                                                text-align: center;\n"
-"                                                                font-size: 16px;")
-        self.label_48.setTextFormat(Qt.AutoText)
-        self.label_48.setScaledContents(True)
-        self.label_48.setAlignment(Qt.AlignCenter)
-        self.label_49 = QLabel(self.group_24)
-        self.label_49.setObjectName(u"label_49")
-        self.label_49.setGeometry(QRect(60, 60, 120, 120))
-        self.label_49.setStyleSheet(u"border: none")
-        self.label_49.setPixmap(QPixmap(u"\n"
-"                                                                :/images/images/images/PyDracula.png"))
-        self.label_49.setScaledContents(True)
-
-        self.gridLayout_5.addWidget(self.group_24, 2, 3, 1, 1)
-
-        self.group_11 = QFrame(self.gridLayoutWidget)
-        self.group_11.setObjectName(u"group_11")
-        self.group_11.setEnabled(True)
-        self.group_11.setMaximumSize(QSize(250, 250))
-        self.group_11.setCursor(QCursor(Qt.PointingHandCursor))
-        self.group_11.setStyleSheet(u"border: 1px solid\n"
-"                                                              #999;\n"
-"                                                              border-radius: 3px;\n"
-"                                                              background-color: rgb(38, 42, 50);")
-        self.group_11.setFrameShape(QFrame.StyledPanel)
-        self.group_11.setFrameShadow(QFrame.Raised)
-        self.pushButton_14 = QPushButton(self.group_11)
-        self.pushButton_14.setObjectName(u"pushButton_14")
-        self.pushButton_14.setGeometry(QRect(210, 10, 31, 24))
-        self.pushButton_14.setStyleSheet(u"border: none;\n"
-"                                                                background-image:\n"
-"                                                                url(:/icons/images/icons/cil-options-horizontal.png);\n"
-"                                                                background-repeat: none;\n"
-"                                                                background-position: center;")
-        self.label_22 = QLabel(self.group_11)
-        self.label_22.setObjectName(u"label_22")
-        self.label_22.setGeometry(QRect(10, 180, 231, 51))
-        self.label_22.setFont(font4)
-        self.label_22.setMouseTracking(True)
-        self.label_22.setStyleSheet(u"border: none;\n"
-"                                                                text-align: center;\n"
-"                                                                font-size: 16px;")
-        self.label_22.setTextFormat(Qt.AutoText)
-        self.label_22.setScaledContents(True)
-        self.label_22.setAlignment(Qt.AlignCenter)
-        self.label_23 = QLabel(self.group_11)
-        self.label_23.setObjectName(u"label_23")
-        self.label_23.setGeometry(QRect(60, 60, 120, 120))
-        self.label_23.setStyleSheet(u"border: none")
-        self.label_23.setPixmap(QPixmap(u"\n"
-"                                                                :/images/images/images/PyDracula.png"))
-        self.label_23.setScaledContents(True)
-
-        self.gridLayout_5.addWidget(self.group_11, 2, 0, 1, 1)
-
-        self.group_3 = QFrame(self.gridLayoutWidget)
-        self.group_3.setObjectName(u"group_3")
-        self.group_3.setEnabled(True)
-        self.group_3.setMaximumSize(QSize(250, 250))
-        self.group_3.setCursor(QCursor(Qt.PointingHandCursor))
-        self.group_3.setStyleSheet(u"border: 1px solid\n"
-"                                                              #999;\n"
-"                                                              border-radius: 3px;\n"
-"                                                              background-color: rgb(38, 42, 50);")
-        self.group_3.setFrameShape(QFrame.StyledPanel)
-        self.group_3.setFrameShadow(QFrame.Raised)
-        self.pushButton_6 = QPushButton(self.group_3)
-        self.pushButton_6.setObjectName(u"pushButton_6")
-        self.pushButton_6.setGeometry(QRect(210, 10, 31, 24))
-        self.pushButton_6.setStyleSheet(u"border: none;\n"
-"                                                                background-image:\n"
-"                                                                url(:/icons/images/icons/cil-options-horizontal.png);\n"
-"                                                                background-repeat: none;\n"
-"                                                                background-position: center;")
-        self.label_6 = QLabel(self.group_3)
-        self.label_6.setObjectName(u"label_6")
-        self.label_6.setGeometry(QRect(10, 180, 231, 51))
-        self.label_6.setFont(font4)
-        self.label_6.setMouseTracking(True)
-        self.label_6.setStyleSheet(u"border: none;\n"
-"                                                                text-align: center;\n"
-"                                                                font-size: 16px;")
-        self.label_6.setTextFormat(Qt.AutoText)
-        self.label_6.setScaledContents(True)
-        self.label_6.setAlignment(Qt.AlignCenter)
-        self.label_7 = QLabel(self.group_3)
-        self.label_7.setObjectName(u"label_7")
-        self.label_7.setGeometry(QRect(60, 60, 120, 120))
-        self.label_7.setStyleSheet(u"border: none")
-        self.label_7.setPixmap(QPixmap(u"\n"
-"                                                                :/images/images/images/PyDracula.png"))
-        self.label_7.setScaledContents(True)
-
-        self.gridLayout_5.addWidget(self.group_3, 0, 0, 1, 1)
-
-        self.group_9 = QFrame(self.gridLayoutWidget)
-        self.group_9.setObjectName(u"group_9")
-        self.group_9.setEnabled(True)
-        self.group_9.setMaximumSize(QSize(250, 250))
-        self.group_9.setCursor(QCursor(Qt.PointingHandCursor))
-        self.group_9.setStyleSheet(u"border: 1px solid\n"
-"                                                              #999;\n"
-"                                                              border-radius: 3px;\n"
-"                                                              background-color: rgb(38, 42, 50);")
-        self.group_9.setFrameShape(QFrame.StyledPanel)
-        self.group_9.setFrameShadow(QFrame.Raised)
-        self.pushButton_12 = QPushButton(self.group_9)
-        self.pushButton_12.setObjectName(u"pushButton_12")
-        self.pushButton_12.setGeometry(QRect(210, 10, 31, 24))
-        self.pushButton_12.setStyleSheet(u"border: none;\n"
-"                                                                background-image:\n"
-"                                                                url(:/icons/images/icons/cil-options-horizontal.png);\n"
-"                                                                background-repeat: none;\n"
-"                                                                background-position: center;")
-        self.label_18 = QLabel(self.group_9)
-        self.label_18.setObjectName(u"label_18")
-        self.label_18.setGeometry(QRect(10, 180, 231, 51))
-        self.label_18.setFont(font4)
-        self.label_18.setMouseTracking(True)
-        self.label_18.setStyleSheet(u"border: none;\n"
-"                                                                text-align: center;\n"
-"                                                                font-size: 16px;")
-        self.label_18.setTextFormat(Qt.AutoText)
-        self.label_18.setScaledContents(True)
-        self.label_18.setAlignment(Qt.AlignCenter)
-        self.label_19 = QLabel(self.group_9)
-        self.label_19.setObjectName(u"label_19")
-        self.label_19.setGeometry(QRect(60, 60, 120, 120))
-        self.label_19.setStyleSheet(u"border: none")
-        self.label_19.setPixmap(QPixmap(u"\n"
-"                                                                :/images/images/images/PyDracula.png"))
-        self.label_19.setScaledContents(True)
-
-        self.gridLayout_5.addWidget(self.group_9, 1, 2, 1, 1)
-
-        self.group_5 = QFrame(self.gridLayoutWidget)
-        self.group_5.setObjectName(u"group_5")
-        self.group_5.setEnabled(True)
-        self.group_5.setMaximumSize(QSize(250, 250))
-        self.group_5.setCursor(QCursor(Qt.PointingHandCursor))
-        self.group_5.setStyleSheet(u"border: 1px solid\n"
-"                                                              #999;\n"
-"                                                              border-radius: 3px;\n"
-"                                                              background-color: rgb(38, 42, 50);")
-        self.group_5.setFrameShape(QFrame.StyledPanel)
-        self.group_5.setFrameShadow(QFrame.Raised)
-        self.pushButton_8 = QPushButton(self.group_5)
-        self.pushButton_8.setObjectName(u"pushButton_8")
-        self.pushButton_8.setGeometry(QRect(210, 10, 31, 24))
-        self.pushButton_8.setStyleSheet(u"border: none;\n"
-"                                                                background-image:\n"
-"                                                                url(:/icons/images/icons/cil-options-horizontal.png);\n"
-"                                                                background-repeat: none;\n"
-"                                                                background-position: center;")
-        self.label_10 = QLabel(self.group_5)
-        self.label_10.setObjectName(u"label_10")
-        self.label_10.setGeometry(QRect(10, 180, 231, 51))
-        self.label_10.setFont(font4)
-        self.label_10.setMouseTracking(True)
-        self.label_10.setStyleSheet(u"border: none;\n"
-"                                                                text-align: center;\n"
-"                                                                font-size: 16px;")
-        self.label_10.setTextFormat(Qt.AutoText)
-        self.label_10.setScaledContents(True)
-        self.label_10.setAlignment(Qt.AlignCenter)
-        self.label_11 = QLabel(self.group_5)
-        self.label_11.setObjectName(u"label_11")
-        self.label_11.setGeometry(QRect(60, 60, 120, 120))
-        self.label_11.setStyleSheet(u"border: none")
-        self.label_11.setPixmap(QPixmap(u"\n"
-"                                                                :/images/images/images/PyDracula.png"))
-        self.label_11.setScaledContents(True)
-
-        self.gridLayout_5.addWidget(self.group_5, 0, 2, 1, 1)
-
-        self.group_10 = QFrame(self.gridLayoutWidget)
-        self.group_10.setObjectName(u"group_10")
-        self.group_10.setEnabled(True)
-        self.group_10.setMaximumSize(QSize(250, 250))
-        self.group_10.setCursor(QCursor(Qt.PointingHandCursor))
-        self.group_10.setStyleSheet(u"border: 1px solid\n"
-"                                                              #999;\n"
-"                                                              border-radius: 3px;\n"
-"                                                              background-color: rgb(38, 42, 50);")
-        self.group_10.setFrameShape(QFrame.VLine)
-        self.group_10.setFrameShadow(QFrame.Plain)
-        self.pushButton_13 = QPushButton(self.group_10)
-        self.pushButton_13.setObjectName(u"pushButton_13")
-        self.pushButton_13.setGeometry(QRect(210, 10, 31, 24))
-        self.pushButton_13.setStyleSheet(u"border: none;\n"
-"                                                                background-image:\n"
-"                                                                url(:/icons/images/icons/cil-options-horizontal.png);\n"
-"                                                                background-repeat: none;\n"
-"                                                                background-position: center;")
-        self.label_20 = QLabel(self.group_10)
-        self.label_20.setObjectName(u"label_20")
-        self.label_20.setGeometry(QRect(10, 180, 231, 51))
-        self.label_20.setFont(font4)
-        self.label_20.setMouseTracking(True)
-        self.label_20.setStyleSheet(u"border: none;\n"
-"                                                                text-align: center;\n"
-"                                                                font-size: 16px;")
-        self.label_20.setTextFormat(Qt.AutoText)
-        self.label_20.setScaledContents(True)
-        self.label_20.setAlignment(Qt.AlignCenter)
-        self.label_21 = QLabel(self.group_10)
-        self.label_21.setObjectName(u"label_21")
-        self.label_21.setGeometry(QRect(60, 60, 120, 120))
-        self.label_21.setStyleSheet(u"border: none")
-        self.label_21.setPixmap(QPixmap(u"\n"
-"                                                                :/images/images/images/PyDracula.png"))
-        self.label_21.setScaledContents(True)
-
-        self.gridLayout_5.addWidget(self.group_10, 1, 3, 1, 1)
-
-        self.group_6 = QFrame(self.gridLayoutWidget)
-        self.group_6.setObjectName(u"group_6")
-        self.group_6.setEnabled(True)
-        self.group_6.setMaximumSize(QSize(250, 250))
-        self.group_6.setCursor(QCursor(Qt.PointingHandCursor))
-        self.group_6.setStyleSheet(u"border: 1px solid\n"
-"                                                              #999;\n"
-"                                                              border-radius: 3px;\n"
-"                                                              background-color: rgb(38, 42, 50);")
-        self.group_6.setFrameShape(QFrame.StyledPanel)
-        self.group_6.setFrameShadow(QFrame.Raised)
-        self.pushButton_9 = QPushButton(self.group_6)
-        self.pushButton_9.setObjectName(u"pushButton_9")
-        self.pushButton_9.setGeometry(QRect(210, 10, 31, 24))
-        self.pushButton_9.setStyleSheet(u"border: none;\n"
-"                                                                background-image:\n"
-"                                                                url(:/icons/images/icons/cil-options-horizontal.png);\n"
-"                                                                background-repeat: none;\n"
-"                                                                background-position: center;")
-        self.label_12 = QLabel(self.group_6)
-        self.label_12.setObjectName(u"label_12")
-        self.label_12.setGeometry(QRect(10, 180, 231, 51))
-        self.label_12.setFont(font4)
-        self.label_12.setMouseTracking(True)
-        self.label_12.setStyleSheet(u"border: none;\n"
-"                                                                text-align: center;\n"
-"                                                                font-size: 16px;")
-        self.label_12.setTextFormat(Qt.AutoText)
-        self.label_12.setScaledContents(True)
-        self.label_12.setAlignment(Qt.AlignCenter)
-        self.label_13 = QLabel(self.group_6)
-        self.label_13.setObjectName(u"label_13")
-        self.label_13.setGeometry(QRect(60, 60, 120, 120))
-        self.label_13.setStyleSheet(u"border: none")
-        self.label_13.setPixmap(QPixmap(u"\n"
-"                                                                :/images/images/images/PyDracula.png"))
-        self.label_13.setScaledContents(True)
-
-        self.gridLayout_5.addWidget(self.group_6, 0, 3, 1, 1)
-
-        self.group_8 = QFrame(self.gridLayoutWidget)
-        self.group_8.setObjectName(u"group_8")
-        self.group_8.setEnabled(True)
-        self.group_8.setMaximumSize(QSize(250, 250))
-        self.group_8.setCursor(QCursor(Qt.PointingHandCursor))
-        self.group_8.setStyleSheet(u"border: 1px solid\n"
-"                                                              #999;\n"
-"                                                              border-radius: 3px;\n"
-"                                                              background-color: rgb(38, 42, 50);")
-        self.group_8.setFrameShape(QFrame.StyledPanel)
-        self.group_8.setFrameShadow(QFrame.Raised)
-        self.pushButton_11 = QPushButton(self.group_8)
-        self.pushButton_11.setObjectName(u"pushButton_11")
-        self.pushButton_11.setGeometry(QRect(210, 10, 31, 24))
-        self.pushButton_11.setStyleSheet(u"border: none;\n"
-"                                                                background-image:\n"
-"                                                                url(:/icons/images/icons/cil-options-horizontal.png);\n"
-"                                                                background-repeat: none;\n"
-"                                                                background-position: center;")
-        self.label_16 = QLabel(self.group_8)
-        self.label_16.setObjectName(u"label_16")
-        self.label_16.setGeometry(QRect(10, 180, 231, 51))
-        self.label_16.setFont(font4)
-        self.label_16.setMouseTracking(True)
-        self.label_16.setStyleSheet(u"border: none;\n"
-"                                                                text-align: center;\n"
-"                                                                font-size: 16px;")
-        self.label_16.setTextFormat(Qt.AutoText)
-        self.label_16.setScaledContents(True)
-        self.label_16.setAlignment(Qt.AlignCenter)
-        self.label_17 = QLabel(self.group_8)
-        self.label_17.setObjectName(u"label_17")
-        self.label_17.setGeometry(QRect(60, 60, 120, 120))
-        self.label_17.setStyleSheet(u"border: none")
-        self.label_17.setPixmap(QPixmap(u"\n"
-"                                                                :/images/images/images/PyDracula.png"))
-        self.label_17.setScaledContents(True)
-
-        self.gridLayout_5.addWidget(self.group_8, 1, 1, 1, 1)
-
-        self.group_4 = QFrame(self.gridLayoutWidget)
-        self.group_4.setObjectName(u"group_4")
-        self.group_4.setEnabled(True)
-        self.group_4.setMaximumSize(QSize(250, 250))
-        self.group_4.setCursor(QCursor(Qt.PointingHandCursor))
-        self.group_4.setStyleSheet(u"border: 1px solid\n"
-"                                                              #999;\n"
-"                                                              border-radius: 3px;\n"
-"                                                              background-color: rgb(38, 42, 50);")
-        self.group_4.setFrameShape(QFrame.StyledPanel)
-        self.group_4.setFrameShadow(QFrame.Raised)
-        self.pushButton_7 = QPushButton(self.group_4)
-        self.pushButton_7.setObjectName(u"pushButton_7")
-        self.pushButton_7.setGeometry(QRect(210, 10, 31, 24))
-        self.pushButton_7.setStyleSheet(u"border: none;\n"
-"                                                                background-image:\n"
-"                                                                url(:/icons/images/icons/cil-options-horizontal.png);\n"
-"                                                                background-repeat: none;\n"
-"                                                                background-position: center;")
-        self.label_8 = QLabel(self.group_4)
-        self.label_8.setObjectName(u"label_8")
-        self.label_8.setGeometry(QRect(10, 180, 231, 51))
-        self.label_8.setFont(font4)
-        self.label_8.setMouseTracking(True)
-        self.label_8.setStyleSheet(u"border: none;\n"
-"                                                                text-align: center;\n"
-"                                                                font-size: 16px;")
-        self.label_8.setTextFormat(Qt.AutoText)
-        self.label_8.setScaledContents(True)
-        self.label_8.setAlignment(Qt.AlignCenter)
-        self.label_9 = QLabel(self.group_4)
-        self.label_9.setObjectName(u"label_9")
-        self.label_9.setGeometry(QRect(60, 60, 120, 120))
-        self.label_9.setStyleSheet(u"border: none")
-        self.label_9.setPixmap(QPixmap(u"\n"
-"                                                                :/images/images/images/PyDracula.png"))
-        self.label_9.setScaledContents(True)
-
-        self.gridLayout_5.addWidget(self.group_4, 0, 1, 1, 1)
-
-        self.group_12 = QFrame(self.gridLayoutWidget)
-        self.group_12.setObjectName(u"group_12")
-        self.group_12.setEnabled(True)
-        self.group_12.setMaximumSize(QSize(250, 250))
-        self.group_12.setCursor(QCursor(Qt.PointingHandCursor))
-        self.group_12.setStyleSheet(u"border: 1px solid\n"
-"                                                              #999;\n"
-"                                                              border-radius: 3px;\n"
-"                                                              background-color: rgb(38, 42, 50);")
-        self.group_12.setFrameShape(QFrame.StyledPanel)
-        self.group_12.setFrameShadow(QFrame.Raised)
-        self.pushButton_15 = QPushButton(self.group_12)
-        self.pushButton_15.setObjectName(u"pushButton_15")
-        self.pushButton_15.setGeometry(QRect(210, 10, 31, 24))
-        self.pushButton_15.setStyleSheet(u"border: none;\n"
-"                                                                background-image:\n"
-"                                                                url(:/icons/images/icons/cil-options-horizontal.png);\n"
-"                                                                background-repeat: none;\n"
-"                                                                background-position: center;")
-        self.label_24 = QLabel(self.group_12)
-        self.label_24.setObjectName(u"label_24")
-        self.label_24.setGeometry(QRect(10, 180, 231, 51))
-        self.label_24.setFont(font4)
-        self.label_24.setMouseTracking(True)
-        self.label_24.setStyleSheet(u"border: none;\n"
-"                                                                text-align: center;\n"
-"                                                                font-size: 16px;")
-        self.label_24.setTextFormat(Qt.AutoText)
-        self.label_24.setScaledContents(True)
-        self.label_24.setAlignment(Qt.AlignCenter)
-        self.label_25 = QLabel(self.group_12)
-        self.label_25.setObjectName(u"label_25")
-        self.label_25.setGeometry(QRect(60, 60, 120, 120))
-        self.label_25.setStyleSheet(u"border: none")
-        self.label_25.setPixmap(QPixmap(u"\n"
-"                                                                :/images/images/images/PyDracula.png"))
-        self.label_25.setScaledContents(True)
-
-        self.gridLayout_5.addWidget(self.group_12, 2, 1, 1, 1)
-
-        self.group_25 = QFrame(self.gridLayoutWidget)
-        self.group_25.setObjectName(u"group_25")
-        self.group_25.setEnabled(True)
-        self.group_25.setMaximumSize(QSize(250, 250))
-        self.group_25.setCursor(QCursor(Qt.PointingHandCursor))
-        self.group_25.setStyleSheet(u"border: 1px solid\n"
-"                                                              #999;\n"
-"                                                              border-radius: 3px;\n"
-"                                                              background-color: rgb(38, 42, 50);")
-        self.group_25.setFrameShape(QFrame.StyledPanel)
-        self.group_25.setFrameShadow(QFrame.Raised)
-        self.pushButton_28 = QPushButton(self.group_25)
-        self.pushButton_28.setObjectName(u"pushButton_28")
-        self.pushButton_28.setGeometry(QRect(210, 10, 31, 24))
-        self.pushButton_28.setStyleSheet(u"border: none;\n"
-"                                                                background-image:\n"
-"                                                                url(:/icons/images/icons/cil-options-horizontal.png);\n"
-"                                                                background-repeat: none;\n"
-"                                                                background-position: center;")
-        self.label_50 = QLabel(self.group_25)
-        self.label_50.setObjectName(u"label_50")
-        self.label_50.setGeometry(QRect(10, 180, 231, 51))
-        self.label_50.setFont(font4)
-        self.label_50.setMouseTracking(True)
-        self.label_50.setStyleSheet(u"border: none;\n"
-"                                                                text-align: center;\n"
-"                                                                font-size: 16px;")
-        self.label_50.setTextFormat(Qt.AutoText)
-        self.label_50.setScaledContents(True)
-        self.label_50.setAlignment(Qt.AlignCenter)
-        self.label_51 = QLabel(self.group_25)
-        self.label_51.setObjectName(u"label_51")
-        self.label_51.setGeometry(QRect(60, 60, 120, 120))
-        self.label_51.setStyleSheet(u"border: none")
-        self.label_51.setPixmap(QPixmap(u"\n"
-"                                                                :/images/images/images/PyDracula.png"))
-        self.label_51.setScaledContents(True)
-
-        self.gridLayout_5.addWidget(self.group_25, 3, 0, 1, 1)
-
-        self.scrollArea_2.setWidget(self.scrollAreaWidgetContents_2)
-        self.stackedWidget.addWidget(self.home)
+        self.stackedWidget.addWidget(self.new_page)
         self.widgets = QWidget()
         self.widgets.setObjectName(u"widgets")
         self.widgets.setStyleSheet(u"b")
@@ -1737,10 +1254,10 @@ class Ui_MainWindow(object):
         self.tableWidget.setHorizontalHeaderItem(3, __qtablewidgetitem3)
         if (self.tableWidget.rowCount() < 16):
             self.tableWidget.setRowCount(16)
-        font5 = QFont()
-        font5.setFamilies([u"Segoe UI"])
+        font4 = QFont()
+        font4.setFamilies([u"Segoe UI"])
         __qtablewidgetitem4 = QTableWidgetItem()
-        __qtablewidgetitem4.setFont(font5);
+        __qtablewidgetitem4.setFont(font4);
         self.tableWidget.setVerticalHeaderItem(0, __qtablewidgetitem4)
         __qtablewidgetitem5 = QTableWidgetItem()
         self.tableWidget.setVerticalHeaderItem(1, __qtablewidgetitem5)
@@ -1781,11 +1298,11 @@ class Ui_MainWindow(object):
         __qtablewidgetitem23 = QTableWidgetItem()
         self.tableWidget.setItem(0, 3, __qtablewidgetitem23)
         self.tableWidget.setObjectName(u"tableWidget")
-        sizePolicy3 = QSizePolicy(QSizePolicy.Expanding, QSizePolicy.Expanding)
-        sizePolicy3.setHorizontalStretch(0)
-        sizePolicy3.setVerticalStretch(0)
-        sizePolicy3.setHeightForWidth(self.tableWidget.sizePolicy().hasHeightForWidth())
-        self.tableWidget.setSizePolicy(sizePolicy3)
+        sizePolicy4 = QSizePolicy(QSizePolicy.Expanding, QSizePolicy.Expanding)
+        sizePolicy4.setHorizontalStretch(0)
+        sizePolicy4.setVerticalStretch(0)
+        sizePolicy4.setHeightForWidth(self.tableWidget.sizePolicy().hasHeightForWidth())
+        self.tableWidget.setSizePolicy(sizePolicy4)
         palette = QPalette()
         brush = QBrush(QColor(221, 221, 221, 255))
         brush.setStyle(Qt.SolidPattern)
@@ -1863,423 +1380,6 @@ class Ui_MainWindow(object):
         self.verticalLayout.addWidget(self.row_3)
 
         self.stackedWidget.addWidget(self.widgets)
-        self.new_page = QWidget()
-        self.new_page.setObjectName(u"new_page")
-        self.new_page.setContextMenuPolicy(Qt.DefaultContextMenu)
-        self.new_page.setLayoutDirection(Qt.LeftToRight)
-        self.new_page.setAutoFillBackground(False)
-        self.verticalLayout_20 = QVBoxLayout(self.new_page)
-        self.verticalLayout_20.setObjectName(u"verticalLayout_20")
-        self.verticalLayout_20.setSizeConstraint(QLayout.SetDefaultConstraint)
-        self.widget_2 = QWidget(self.new_page)
-        self.widget_2.setObjectName(u"widget_2")
-        self.widget_2.setEnabled(True)
-        self.widget_2.setMaximumSize(QSize(1178, 50))
-        self.widget_2.setLayoutDirection(Qt.RightToLeft)
-        self.label = QLabel(self.widget_2)
-        self.label.setObjectName(u"label")
-        self.label.setGeometry(QRect(10, 10, 81, 31))
-        self.label.setStyleSheet(u"font-weight: 700;\n"
-"                                                          font-size: 24px;")
-        self.pushButton_3 = QPushButton(self.widget_2)
-        self.pushButton_3.setObjectName(u"pushButton_3")
-        self.pushButton_3.setGeometry(QRect(940, 10, 211, 31))
-        self.pushButton_3.setLayoutDirection(Qt.LeftToRight)
-        self.pushButton_3.setStyleSheet(u"padding-left: 20px;\n"
-"                                                          background-image:\n"
-"                                                          url(:/icons/images/icons/cil-user-follow.png);\n"
-"                                                          background-origin: content;\n"
-"                                                          background-repeat: no-repeat;\n"
-"                                                          background-position: left center;")
-        self.pushButton_3.setAutoDefault(False)
-        self.pushButton_4 = QPushButton(self.widget_2)
-        self.pushButton_4.setObjectName(u"pushButton_4")
-        self.pushButton_4.setGeometry(QRect(900, 10, 31, 31))
-        self.pushButton_4.setStyleSheet(u"border: none;\n"
-"                                                          background-image:\n"
-"                                                          url(:/icons/images/icons/cil-settings.png);\n"
-"                                                          background-repeat: none;\n"
-"                                                          background-position: center;")
-
-        self.verticalLayout_20.addWidget(self.widget_2)
-
-        self.frame_2 = QFrame(self.new_page)
-        self.frame_2.setObjectName(u"frame_2")
-        self.frame_2.setFrameShape(QFrame.StyledPanel)
-        self.frame_2.setFrameShadow(QFrame.Raised)
-        self.scrollArea_3 = QScrollArea(self.frame_2)
-        self.scrollArea_3.setObjectName(u"scrollArea_3")
-        self.scrollArea_3.setGeometry(QRect(0, 0, 1160, 520))
-        self.scrollArea_3.setMouseTracking(False)
-        self.scrollArea_3.setTabletTracking(False)
-        self.scrollArea_3.setAcceptDrops(False)
-        self.scrollArea_3.setStyleSheet(u"border: none;")
-        self.scrollArea_3.setHorizontalScrollBarPolicy(Qt.ScrollBarAlwaysOff)
-        self.scrollArea_3.setSizeAdjustPolicy(QAbstractScrollArea.AdjustToContents)
-        self.scrollArea_3.setWidgetResizable(True)
-        self.scrollAreaWidgetContents_3 = QWidget()
-        self.scrollAreaWidgetContents_3.setObjectName(u"scrollAreaWidgetContents_3")
-        self.scrollAreaWidgetContents_3.setGeometry(QRect(0, -180, 1152, 700))
-        self.scrollAreaWidgetContents_3.setMinimumSize(QSize(0, 700))
-        self.scrollAreaWidgetContents_3.setStyleSheet(u"")
-        self.gridLayoutWidget_2 = QWidget(self.scrollAreaWidgetContents_3)
-        self.gridLayoutWidget_2.setObjectName(u"gridLayoutWidget_2")
-        self.gridLayoutWidget_2.setGeometry(QRect(0, 0, 1161, 671))
-        self.gridLayout_3 = QGridLayout(self.gridLayoutWidget_2)
-        self.gridLayout_3.setSpacing(0)
-        self.gridLayout_3.setObjectName(u"gridLayout_3")
-        self.gridLayout_3.setContentsMargins(0, 0, 0, 0)
-        self.group_26 = QFrame(self.gridLayoutWidget_2)
-        self.group_26.setObjectName(u"group_26")
-        self.group_26.setEnabled(True)
-        self.group_26.setMaximumSize(QSize(250, 250))
-        self.group_26.setCursor(QCursor(Qt.PointingHandCursor))
-        self.group_26.setStyleSheet(u"border: 1px\n"
-"                                                                    solid #999;\n"
-"                                                                    border-radius: 3px;\n"
-"                                                                    background-color: rgb(38, 42,\n"
-"                                                                    50);")
-        self.group_26.setFrameShape(QFrame.StyledPanel)
-        self.group_26.setFrameShadow(QFrame.Raised)
-        self.pushButton_29 = QPushButton(self.group_26)
-        self.pushButton_29.setObjectName(u"pushButton_29")
-        self.pushButton_29.setGeometry(QRect(210, 10, 30, 30))
-        self.pushButton_29.setStyleSheet(u"border:\n"
-"                                                                      none;\n"
-"                                                                      background-image:\n"
-"                                                                      url(:/icons/images/icons/cil-options-horizontal.png);\n"
-"                                                                      background-repeat: none;\n"
-"                                                                      background-position: center;")
-        self.label_52 = QLabel(self.group_26)
-        self.label_52.setObjectName(u"label_52")
-        self.label_52.setGeometry(QRect(10, 180, 231, 51))
-        self.label_52.setFont(font4)
-        self.label_52.setMouseTracking(True)
-        self.label_52.setStyleSheet(u"border:\n"
-"                                                                      none;\n"
-"                                                                      text-align: center;\n"
-"                                                                      font-size: 16px;")
-        self.label_52.setTextFormat(Qt.AutoText)
-        self.label_52.setScaledContents(True)
-        self.label_52.setAlignment(Qt.AlignCenter)
-        self.label_53 = QLabel(self.group_26)
-        self.label_53.setObjectName(u"label_53")
-        self.label_53.setGeometry(QRect(60, 60, 120, 120))
-        self.label_53.setStyleSheet(u"border: none")
-        self.label_53.setPixmap(QPixmap(u":/images/images/images/PyDracula.png"))
-        self.label_53.setScaledContents(True)
-
-        self.gridLayout_3.addWidget(self.group_26, 0, 2, 1, 1)
-
-        self.group_27 = QFrame(self.gridLayoutWidget_2)
-        self.group_27.setObjectName(u"group_27")
-        self.group_27.setEnabled(True)
-        self.group_27.setMaximumSize(QSize(250, 250))
-        self.group_27.setCursor(QCursor(Qt.PointingHandCursor))
-        self.group_27.setStyleSheet(u"border: 1px\n"
-"                                                                    solid #999;\n"
-"                                                                    border-radius: 3px;\n"
-"                                                                    background-color: rgb(38, 42,\n"
-"                                                                    50);")
-        self.group_27.setFrameShape(QFrame.StyledPanel)
-        self.group_27.setFrameShadow(QFrame.Raised)
-        self.pushButton_30 = QPushButton(self.group_27)
-        self.pushButton_30.setObjectName(u"pushButton_30")
-        self.pushButton_30.setGeometry(QRect(210, 10, 30, 30))
-        self.pushButton_30.setStyleSheet(u"border:\n"
-"                                                                      none;\n"
-"                                                                      background-image:\n"
-"                                                                      url(:/icons/images/icons/cil-options-horizontal.png);\n"
-"                                                                      background-repeat: none;\n"
-"                                                                      background-position: center;")
-        self.label_54 = QLabel(self.group_27)
-        self.label_54.setObjectName(u"label_54")
-        self.label_54.setGeometry(QRect(10, 180, 231, 51))
-        self.label_54.setFont(font4)
-        self.label_54.setMouseTracking(True)
-        self.label_54.setStyleSheet(u"border:\n"
-"                                                                      none;\n"
-"                                                                      text-align: center;\n"
-"                                                                      font-size: 16px;")
-        self.label_54.setTextFormat(Qt.AutoText)
-        self.label_54.setScaledContents(True)
-        self.label_54.setAlignment(Qt.AlignCenter)
-        self.label_55 = QLabel(self.group_27)
-        self.label_55.setObjectName(u"label_55")
-        self.label_55.setGeometry(QRect(60, 60, 120, 120))
-        self.label_55.setStyleSheet(u"border: none")
-        self.label_55.setPixmap(QPixmap(u":/images/images/images/PyDracula.png"))
-        self.label_55.setScaledContents(True)
-
-        self.gridLayout_3.addWidget(self.group_27, 0, 3, 1, 1)
-
-        self.group_28 = QFrame(self.gridLayoutWidget_2)
-        self.group_28.setObjectName(u"group_28")
-        self.group_28.setEnabled(True)
-        self.group_28.setMaximumSize(QSize(250, 250))
-        self.group_28.setCursor(QCursor(Qt.PointingHandCursor))
-        self.group_28.setStyleSheet(u"border: 1px\n"
-"                                                                    solid #999;\n"
-"                                                                    border-radius: 3px;\n"
-"                                                                    background-color: rgb(38, 42,\n"
-"                                                                    50);")
-        self.group_28.setFrameShape(QFrame.StyledPanel)
-        self.group_28.setFrameShadow(QFrame.Raised)
-        self.pushButton_31 = QPushButton(self.group_28)
-        self.pushButton_31.setObjectName(u"pushButton_31")
-        self.pushButton_31.setGeometry(QRect(210, 10, 30, 30))
-        self.pushButton_31.setStyleSheet(u"border:\n"
-"                                                                      none;\n"
-"                                                                      background-image:\n"
-"                                                                      url(:/icons/images/icons/cil-options-horizontal.png);\n"
-"                                                                      background-repeat: none;\n"
-"                                                                      background-position: center;")
-        self.label_56 = QLabel(self.group_28)
-        self.label_56.setObjectName(u"label_56")
-        self.label_56.setGeometry(QRect(10, 180, 231, 51))
-        self.label_56.setFont(font4)
-        self.label_56.setMouseTracking(True)
-        self.label_56.setStyleSheet(u"border:\n"
-"                                                                      none;\n"
-"                                                                      text-align: center;\n"
-"                                                                      font-size: 16px;")
-        self.label_56.setTextFormat(Qt.AutoText)
-        self.label_56.setScaledContents(True)
-        self.label_56.setAlignment(Qt.AlignCenter)
-        self.label_57 = QLabel(self.group_28)
-        self.label_57.setObjectName(u"label_57")
-        self.label_57.setGeometry(QRect(60, 60, 120, 120))
-        self.label_57.setStyleSheet(u"border: none")
-        self.label_57.setPixmap(QPixmap(u":/images/images/images/PyDracula.png"))
-        self.label_57.setScaledContents(True)
-
-        self.gridLayout_3.addWidget(self.group_28, 1, 0, 1, 1)
-
-        self.group_29 = QFrame(self.gridLayoutWidget_2)
-        self.group_29.setObjectName(u"group_29")
-        self.group_29.setEnabled(True)
-        self.group_29.setMaximumSize(QSize(250, 250))
-        self.group_29.setCursor(QCursor(Qt.PointingHandCursor))
-        self.group_29.setStyleSheet(u"border: 1px\n"
-"                                                                    solid #999;\n"
-"                                                                    border-radius: 3px;\n"
-"                                                                    background-color: rgb(38, 42,\n"
-"                                                                    50);")
-        self.group_29.setFrameShape(QFrame.StyledPanel)
-        self.group_29.setFrameShadow(QFrame.Raised)
-        self.pushButton_32 = QPushButton(self.group_29)
-        self.pushButton_32.setObjectName(u"pushButton_32")
-        self.pushButton_32.setGeometry(QRect(210, 10, 30, 30))
-        self.pushButton_32.setStyleSheet(u"border:\n"
-"                                                                      none;\n"
-"                                                                      background-image:\n"
-"                                                                      url(:/icons/images/icons/cil-options-horizontal.png);\n"
-"                                                                      background-repeat: none;\n"
-"                                                                      background-position: center;")
-        self.label_58 = QLabel(self.group_29)
-        self.label_58.setObjectName(u"label_58")
-        self.label_58.setGeometry(QRect(10, 180, 231, 51))
-        self.label_58.setFont(font4)
-        self.label_58.setMouseTracking(True)
-        self.label_58.setStyleSheet(u"border:\n"
-"                                                                      none;\n"
-"                                                                      text-align: center;\n"
-"                                                                      font-size: 16px;")
-        self.label_58.setTextFormat(Qt.AutoText)
-        self.label_58.setScaledContents(True)
-        self.label_58.setAlignment(Qt.AlignCenter)
-        self.label_59 = QLabel(self.group_29)
-        self.label_59.setObjectName(u"label_59")
-        self.label_59.setGeometry(QRect(60, 60, 120, 120))
-        self.label_59.setStyleSheet(u"border: none")
-        self.label_59.setPixmap(QPixmap(u":/images/images/images/PyDracula.png"))
-        self.label_59.setScaledContents(True)
-
-        self.gridLayout_3.addWidget(self.group_29, 1, 1, 1, 1)
-
-        self.group_1 = QFrame(self.gridLayoutWidget_2)
-        self.group_1.setObjectName(u"group_1")
-        self.group_1.setEnabled(True)
-        self.group_1.setMaximumSize(QSize(250, 250))
-        self.group_1.setCursor(QCursor(Qt.PointingHandCursor))
-        self.group_1.setStyleSheet(u"border: 1px\n"
-"                                                                    solid #999;\n"
-"                                                                    border-radius: 3px;\n"
-"                                                                    background-color: rgb(38, 42,\n"
-"                                                                    50);")
-        self.group_1.setFrameShape(QFrame.StyledPanel)
-        self.group_1.setFrameShadow(QFrame.Raised)
-        self.pushButton_2 = QPushButton(self.group_1)
-        self.pushButton_2.setObjectName(u"pushButton_2")
-        self.pushButton_2.setGeometry(QRect(210, 10, 30, 30))
-        self.pushButton_2.setStyleSheet(u"QPushButton\n"
-"                                                                      {\n"
-"                                                                      border: none;\n"
-"                                                                      background-image:\n"
-"                                                                      url(:/icons/images/icons/cil-options-horizontal.png);\n"
-"                                                                      background-repeat: none;\n"
-"                                                                      background-position: center;\n"
-"                                                                      border-radius: 14px;\n"
-"                                                                      }\n"
-"\n"
-"                                                                      QPushButton:hover {\n"
-"                                                                      background-color: #fff;\n"
-"                                                       "
-                        "               border: 2px solid rgb(61, 70,\n"
-"                                                                      86);\n"
-"                                                                      }")
-        self.label_2 = QLabel(self.group_1)
-        self.label_2.setObjectName(u"label_2")
-        self.label_2.setGeometry(QRect(10, 180, 231, 51))
-        self.label_2.setFont(font4)
-        self.label_2.setMouseTracking(True)
-        self.label_2.setStyleSheet(u"border:\n"
-"                                                                      none;\n"
-"                                                                      text-align: center;\n"
-"                                                                      font-size: 16px;")
-        self.label_2.setTextFormat(Qt.AutoText)
-        self.label_2.setScaledContents(True)
-        self.label_2.setAlignment(Qt.AlignCenter)
-        self.label_3 = QLabel(self.group_1)
-        self.label_3.setObjectName(u"label_3")
-        self.label_3.setGeometry(QRect(60, 60, 120, 120))
-        self.label_3.setStyleSheet(u"border: none")
-        self.label_3.setPixmap(QPixmap(u":/images/images/images/PyDracula.png"))
-        self.label_3.setScaledContents(True)
-
-        self.gridLayout_3.addWidget(self.group_1, 0, 0, 1, 1)
-
-        self.group_31 = QFrame(self.gridLayoutWidget_2)
-        self.group_31.setObjectName(u"group_31")
-        self.group_31.setEnabled(True)
-        self.group_31.setMaximumSize(QSize(250, 250))
-        self.group_31.setCursor(QCursor(Qt.PointingHandCursor))
-        self.group_31.setStyleSheet(u"border: 1px\n"
-"                                                                    solid #999;\n"
-"                                                                    border-radius: 3px;\n"
-"                                                                    background-color: rgb(38, 42,\n"
-"                                                                    50);")
-        self.group_31.setFrameShape(QFrame.StyledPanel)
-        self.group_31.setFrameShadow(QFrame.Raised)
-        self.pushButton_34 = QPushButton(self.group_31)
-        self.pushButton_34.setObjectName(u"pushButton_34")
-        self.pushButton_34.setGeometry(QRect(210, 10, 30, 30))
-        self.pushButton_34.setStyleSheet(u"border:\n"
-"                                                                      none;\n"
-"                                                                      background-image:\n"
-"                                                                      url(:/icons/images/icons/cil-options-horizontal.png);\n"
-"                                                                      background-repeat: none;\n"
-"                                                                      background-position: center;")
-        self.label_62 = QLabel(self.group_31)
-        self.label_62.setObjectName(u"label_62")
-        self.label_62.setGeometry(QRect(10, 180, 231, 51))
-        self.label_62.setFont(font4)
-        self.label_62.setMouseTracking(True)
-        self.label_62.setStyleSheet(u"border:\n"
-"                                                                      none;\n"
-"                                                                      text-align: center;\n"
-"                                                                      font-size: 16px;")
-        self.label_62.setTextFormat(Qt.AutoText)
-        self.label_62.setScaledContents(True)
-        self.label_62.setAlignment(Qt.AlignCenter)
-        self.label_63 = QLabel(self.group_31)
-        self.label_63.setObjectName(u"label_63")
-        self.label_63.setGeometry(QRect(60, 60, 120, 120))
-        self.label_63.setStyleSheet(u"border: none")
-        self.label_63.setPixmap(QPixmap(u":/images/images/images/PyDracula.png"))
-        self.label_63.setScaledContents(True)
-
-        self.gridLayout_3.addWidget(self.group_31, 1, 3, 1, 1)
-
-        self.group_2 = QFrame(self.gridLayoutWidget_2)
-        self.group_2.setObjectName(u"group_2")
-        self.group_2.setEnabled(True)
-        self.group_2.setMaximumSize(QSize(250, 250))
-        self.group_2.setCursor(QCursor(Qt.PointingHandCursor))
-        self.group_2.setStyleSheet(u"border: 1px\n"
-"                                                                    solid #999;\n"
-"                                                                    border-radius: 3px;\n"
-"                                                                    background-color: rgb(38, 42,\n"
-"                                                                    50);")
-        self.group_2.setFrameShape(QFrame.StyledPanel)
-        self.group_2.setFrameShadow(QFrame.Raised)
-        self.pushButton_5 = QPushButton(self.group_2)
-        self.pushButton_5.setObjectName(u"pushButton_5")
-        self.pushButton_5.setGeometry(QRect(210, 10, 30, 30))
-        self.pushButton_5.setStyleSheet(u"border:\n"
-"                                                                      none;\n"
-"                                                                      background-image:\n"
-"                                                                      url(:/icons/images/icons/cil-options-horizontal.png);\n"
-"                                                                      background-repeat: none;\n"
-"                                                                      background-position: center;")
-        self.label_4 = QLabel(self.group_2)
-        self.label_4.setObjectName(u"label_4")
-        self.label_4.setGeometry(QRect(10, 180, 231, 51))
-        self.label_4.setFont(font4)
-        self.label_4.setMouseTracking(True)
-        self.label_4.setStyleSheet(u"border:\n"
-"                                                                      none;\n"
-"                                                                      text-align: center;\n"
-"                                                                      font-size: 16px;")
-        self.label_4.setTextFormat(Qt.AutoText)
-        self.label_4.setScaledContents(True)
-        self.label_4.setAlignment(Qt.AlignCenter)
-        self.label_5 = QLabel(self.group_2)
-        self.label_5.setObjectName(u"label_5")
-        self.label_5.setGeometry(QRect(60, 60, 120, 120))
-        self.label_5.setStyleSheet(u"border: none")
-        self.label_5.setPixmap(QPixmap(u":/images/images/images/PyDracula.png"))
-        self.label_5.setScaledContents(True)
-
-        self.gridLayout_3.addWidget(self.group_2, 0, 1, 1, 1)
-
-        self.group_30 = QFrame(self.gridLayoutWidget_2)
-        self.group_30.setObjectName(u"group_30")
-        self.group_30.setEnabled(True)
-        self.group_30.setMaximumSize(QSize(250, 250))
-        self.group_30.setCursor(QCursor(Qt.PointingHandCursor))
-        self.group_30.setStyleSheet(u"border: 1px\n"
-"                                                                    solid #999;\n"
-"                                                                    border-radius: 3px;\n"
-"                                                                    background-color: rgb(38, 42,\n"
-"                                                                    50);")
-        self.group_30.setFrameShape(QFrame.StyledPanel)
-        self.group_30.setFrameShadow(QFrame.Raised)
-        self.pushButton_33 = QPushButton(self.group_30)
-        self.pushButton_33.setObjectName(u"pushButton_33")
-        self.pushButton_33.setGeometry(QRect(210, 10, 30, 30))
-        self.pushButton_33.setStyleSheet(u"border:\n"
-"                                                                      none;\n"
-"                                                                      background-image:\n"
-"                                                                      url(:/icons/images/icons/cil-options-horizontal.png);\n"
-"                                                                      background-repeat: none;\n"
-"                                                                      background-position: center;")
-        self.label_60 = QLabel(self.group_30)
-        self.label_60.setObjectName(u"label_60")
-        self.label_60.setGeometry(QRect(10, 180, 231, 51))
-        self.label_60.setFont(font4)
-        self.label_60.setMouseTracking(True)
-        self.label_60.setStyleSheet(u"border:\n"
-"                                                                      none;\n"
-"                                                                      text-align: center;\n"
-"                                                                      font-size: 16px;")
-        self.label_60.setTextFormat(Qt.AutoText)
-        self.label_60.setScaledContents(True)
-        self.label_60.setAlignment(Qt.AlignCenter)
-        self.label_61 = QLabel(self.group_30)
-        self.label_61.setObjectName(u"label_61")
-        self.label_61.setGeometry(QRect(60, 60, 120, 120))
-        self.label_61.setStyleSheet(u"border: none")
-        self.label_61.setPixmap(QPixmap(u":/images/images/images/PyDracula.png"))
-        self.label_61.setScaledContents(True)
-
-        self.gridLayout_3.addWidget(self.group_30, 1, 2, 1, 1)
-
-        self.scrollArea_3.setWidget(self.scrollAreaWidgetContents_3)
-
-        self.verticalLayout_20.addWidget(self.frame_2)
-
-        self.stackedWidget.addWidget(self.new_page)
 
         self.verticalLayout_15.addWidget(self.frame)
 
@@ -2345,7 +1445,7 @@ class Ui_MainWindow(object):
         self.btn_print.setStyleSheet(u"border: none;\n"
 "                                                          background-image:\n"
 "                                                          url(:/icons/images/icons/options-white.png);\n"
-"                                                          backgrounf-color: #fff;")
+"                                                          background-color: #fff;")
 
         self.verticalLayout_14.addWidget(self.btn_print)
 
@@ -2388,7 +1488,11 @@ class Ui_MainWindow(object):
         self.creditsLabel = QLabel(self.bottomBar)
         self.creditsLabel.setObjectName(u"creditsLabel")
         self.creditsLabel.setMaximumSize(QSize(16777215, 16))
-        self.creditsLabel.setFont(font4)
+        font5 = QFont()
+        font5.setFamilies([u"Segoe UI"])
+        font5.setBold(False)
+        font5.setItalic(False)
+        self.creditsLabel.setFont(font5)
         self.creditsLabel.setAlignment(Qt.AlignLeading|Qt.AlignLeft|Qt.AlignVCenter)
 
         self.horizontalLayout_5.addWidget(self.creditsLabel)
@@ -2424,7 +1528,7 @@ class Ui_MainWindow(object):
 
         self.retranslateUi(MainWindow)
 
-        self.stackedWidget.setCurrentIndex(2)
+        self.stackedWidget.setCurrentIndex(0)
         self.pushButton_3.setDefault(False)
 
 
@@ -2436,9 +1540,8 @@ class Ui_MainWindow(object):
         self.titleLeftApp.setText(QCoreApplication.translate("MainWindow", u"PyDracula", None))
         self.titleLeftDescription.setText(QCoreApplication.translate("MainWindow", u"Modern GUI / Flat Style", None))
         self.toggleButton.setText(QCoreApplication.translate("MainWindow", u"Hide", None))
-        self.btn_home.setText(QCoreApplication.translate("MainWindow", u"Home", None))
-        self.btn_widgets.setText(QCoreApplication.translate("MainWindow", u"Widgets", None))
         self.btn_new.setText(QCoreApplication.translate("MainWindow", u"New", None))
+        self.btn_widgets.setText(QCoreApplication.translate("MainWindow", u"Widgets", None))
         self.btn_save.setText(QCoreApplication.translate("MainWindow", u"Save", None))
         self.btn_exit.setText(QCoreApplication.translate("MainWindow", u"Exit", None))
         self.toggleLeftBox.setText(QCoreApplication.translate("MainWindow", u"Left Box", None))
@@ -2487,84 +1590,9 @@ class Ui_MainWindow(object):
         self.closeAppBtn.setToolTip(QCoreApplication.translate("MainWindow", u"Close", None))
 #endif // QT_CONFIG(tooltip)
         self.closeAppBtn.setText("")
-        self.pushButton_26.setText("")
-#if QT_CONFIG(tooltip)
-        self.label_46.setToolTip("")
-#endif // QT_CONFIG(tooltip)
-        self.label_46.setText(QCoreApplication.translate("MainWindow", u"Nh\u00f3m 2", None))
-        self.label_47.setText("")
-        self.pushButton_10.setText("")
-#if QT_CONFIG(tooltip)
-        self.label_14.setToolTip("")
-#endif // QT_CONFIG(tooltip)
-        self.label_14.setText(QCoreApplication.translate("MainWindow", u"Nh\u00f3m 2", None))
-        self.label_15.setText("")
-        self.pushButton_27.setText("")
-#if QT_CONFIG(tooltip)
-        self.label_48.setToolTip("")
-#endif // QT_CONFIG(tooltip)
-        self.label_48.setText(QCoreApplication.translate("MainWindow", u"Nh\u00f3m 2", None))
-        self.label_49.setText("")
-        self.pushButton_14.setText("")
-#if QT_CONFIG(tooltip)
-        self.label_22.setToolTip("")
-#endif // QT_CONFIG(tooltip)
-        self.label_22.setText(QCoreApplication.translate("MainWindow", u"Nh\u00f3m 2", None))
-        self.label_23.setText("")
-        self.pushButton_6.setText("")
-#if QT_CONFIG(tooltip)
-        self.label_6.setToolTip("")
-#endif // QT_CONFIG(tooltip)
-        self.label_6.setText(QCoreApplication.translate("MainWindow", u"Nh\u00f3m 2", None))
-        self.label_7.setText("")
-        self.pushButton_12.setText("")
-#if QT_CONFIG(tooltip)
-        self.label_18.setToolTip("")
-#endif // QT_CONFIG(tooltip)
-        self.label_18.setText(QCoreApplication.translate("MainWindow", u"Nh\u00f3m 2", None))
-        self.label_19.setText("")
-        self.pushButton_8.setText("")
-#if QT_CONFIG(tooltip)
-        self.label_10.setToolTip("")
-#endif // QT_CONFIG(tooltip)
-        self.label_10.setText(QCoreApplication.translate("MainWindow", u"Nh\u00f3m 2", None))
-        self.label_11.setText("")
-        self.pushButton_13.setText("")
-#if QT_CONFIG(tooltip)
-        self.label_20.setToolTip("")
-#endif // QT_CONFIG(tooltip)
-        self.label_20.setText(QCoreApplication.translate("MainWindow", u"Nh\u00f3m 2", None))
-        self.label_21.setText("")
-        self.pushButton_9.setText("")
-#if QT_CONFIG(tooltip)
-        self.label_12.setToolTip("")
-#endif // QT_CONFIG(tooltip)
-        self.label_12.setText(QCoreApplication.translate("MainWindow", u"Nh\u00f3m 2", None))
-        self.label_13.setText("")
-        self.pushButton_11.setText("")
-#if QT_CONFIG(tooltip)
-        self.label_16.setToolTip("")
-#endif // QT_CONFIG(tooltip)
-        self.label_16.setText(QCoreApplication.translate("MainWindow", u"Nh\u00f3m 2", None))
-        self.label_17.setText("")
-        self.pushButton_7.setText("")
-#if QT_CONFIG(tooltip)
-        self.label_8.setToolTip("")
-#endif // QT_CONFIG(tooltip)
-        self.label_8.setText(QCoreApplication.translate("MainWindow", u"Nh\u00f3m 2", None))
-        self.label_9.setText("")
-        self.pushButton_15.setText("")
-#if QT_CONFIG(tooltip)
-        self.label_24.setToolTip("")
-#endif // QT_CONFIG(tooltip)
-        self.label_24.setText(QCoreApplication.translate("MainWindow", u"Nh\u00f3m 2", None))
-        self.label_25.setText("")
-        self.pushButton_28.setText("")
-#if QT_CONFIG(tooltip)
-        self.label_50.setToolTip("")
-#endif // QT_CONFIG(tooltip)
-        self.label_50.setText(QCoreApplication.translate("MainWindow", u"Nh\u00f3m 2", None))
-        self.label_51.setText("")
+        self.label.setText(QCoreApplication.translate("MainWindow", u"Nh\u00f3m", None))
+        self.pushButton_3.setText(QCoreApplication.translate("MainWindow", u"     Tham gia ho\u1eb7c t\u1ea1o nh\u00f3m", None))
+        self.pushButton_4.setText("")
         self.labelBoxBlenderInstalation.setText(QCoreApplication.translate("MainWindow", u"FILE BOX", None))
         self.pushButton.setText(QCoreApplication.translate("MainWindow", u"Open", None))
         self.labelVersion_3.setText(QCoreApplication.translate("MainWindow", u"Choose file here", None))
@@ -2623,57 +1651,6 @@ class Ui_MainWindow(object):
         ___qtablewidgetitem23.setText(QCoreApplication.translate("MainWindow", u"Line", None));
         self.tableWidget.setSortingEnabled(__sortingEnabled)
 
-        self.label.setText(QCoreApplication.translate("MainWindow", u"Nh\u00f3m", None))
-        self.pushButton_3.setText(QCoreApplication.translate("MainWindow", u"Tham gia ho\u1eb7c t\u1ea1o nh\u00f3m", None))
-        self.pushButton_4.setText("")
-        self.pushButton_29.setText("")
-#if QT_CONFIG(tooltip)
-        self.label_52.setToolTip("")
-#endif // QT_CONFIG(tooltip)
-        self.label_52.setText(QCoreApplication.translate("MainWindow", u"Nh\u00f3m 3", None))
-        self.label_53.setText("")
-        self.pushButton_30.setText("")
-#if QT_CONFIG(tooltip)
-        self.label_54.setToolTip("")
-#endif // QT_CONFIG(tooltip)
-        self.label_54.setText(QCoreApplication.translate("MainWindow", u"Nh\u00f3m 4", None))
-        self.label_55.setText("")
-        self.pushButton_31.setText("")
-#if QT_CONFIG(tooltip)
-        self.label_56.setToolTip("")
-#endif // QT_CONFIG(tooltip)
-        self.label_56.setText(QCoreApplication.translate("MainWindow", u"Nh\u00f3m 5", None))
-        self.label_57.setText("")
-        self.pushButton_32.setText("")
-#if QT_CONFIG(tooltip)
-        self.label_58.setToolTip("")
-#endif // QT_CONFIG(tooltip)
-        self.label_58.setText(QCoreApplication.translate("MainWindow", u"Nh\u00f3m 6", None))
-        self.label_59.setText("")
-        self.pushButton_2.setText("")
-#if QT_CONFIG(tooltip)
-        self.label_2.setToolTip("")
-#endif // QT_CONFIG(tooltip)
-        self.label_2.setText(QCoreApplication.translate("MainWindow", u"Nh\u00f3m 1", None))
-        self.label_3.setText("")
-        self.pushButton_34.setText("")
-#if QT_CONFIG(tooltip)
-        self.label_62.setToolTip("")
-#endif // QT_CONFIG(tooltip)
-        self.label_62.setText(QCoreApplication.translate("MainWindow", u"Nh\u00f3m 8", None))
-        self.label_63.setText("")
-        self.pushButton_5.setText("")
-#if QT_CONFIG(tooltip)
-        self.label_4.setToolTip("")
-#endif // QT_CONFIG(tooltip)
-        self.label_4.setText(QCoreApplication.translate("MainWindow", u"Nh\u00f3m 2", None))
-        self.label_5.setText("")
-        self.pushButton_33.setText("")
-#if QT_CONFIG(tooltip)
-        self.label_60.setToolTip("")
-#endif // QT_CONFIG(tooltip)
-        self.label_60.setText(QCoreApplication.translate("MainWindow", u"Nh\u00f3m 7", None))
-        self.label_61.setText("")
         self.btn_message.setText(QCoreApplication.translate("MainWindow", u"Message", None))
         self.btn_print.setText(QCoreApplication.translate("MainWindow", u"Print", None))
         self.btn_logout.setText(QCoreApplication.translate("MainWindow", u"Logout", None))

@@ -25,7 +25,7 @@ class Directory:
         return self._parent
 
     @property
-    def group(self) -> Group:
+    def group(self):
         if self._group is None:
             self._group = Group.get_by_id(self.group_id)
         return self._group

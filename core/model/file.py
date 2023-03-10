@@ -20,25 +20,25 @@ class File:
         return self.name
 
     @property
-    def owner(self) -> User:
+    def owner(self):
         if self._owner is None:
             self._owner = User.get_by_id(self.owner_id)
         return self._owner
 
     @property
-    def group(self) -> Group:
+    def group(self):
         if self._group is None:
             self._group = Group.get_by_id(self.group_id)
         return self._group
 
     @property
-    def directory(self) -> Directory:
+    def directory(self):
         if self._directory is None:
             self._directory = Directory.get_by_id(self.directory_id)
         return self._directory
 
     @property
-    def modified_by(self) -> User:
+    def modified_by(self):
         if self._modify_by is None:
             self._modify_by = User.get_by_id(self.modified_by)
         return self._modify_by

@@ -2,9 +2,10 @@ import sys
 
 from modules import *
 from widgets import *
+from typing import List
 
-
-from core.http.http import HttpHandle
+from core.model import Group
+from core.http import login as login_fn, register as register_fn, init_data, user
 
 widgets = None
 
@@ -17,7 +18,7 @@ class MainWindow(QMainWindow):
         self.ui.setupUi(self)
         global widgets
         widgets = self.ui
-        Settings.ENABLE_CUSTOM_TITLE_BAR = True
+        Settings.ENABLE_CUSTOM_TITLE_BAR = False
 
         title = "FileShare"
         description = "Share files with your friends"
@@ -33,7 +34,6 @@ class MainWindow(QMainWindow):
 
         widgets.tableWidget.horizontalHeader().setSectionResizeMode(QHeaderView.Stretch)
 
-        widgets.btn_home.clicked.connect(self.buttonClick)
         widgets.btn_widgets.clicked.connect(self.buttonClick)
         widgets.btn_new.clicked.connect(self.buttonClick)
         widgets.btn_save.clicked.connect(self.buttonClick)
@@ -47,7 +47,7 @@ class MainWindow(QMainWindow):
             UIFunctions.toggleRightBox(self, True)
         widgets.settingsTopBtn.clicked.connect(openCloseRightBox)
 
-        self.show()
+        # self.show()
 
         useCustomTheme = False
         themeFile = "themes\dark_theme.css"
@@ -61,9 +61,9 @@ class MainWindow(QMainWindow):
 
         # SET HOME PAGE AND SELECT MENU
         # ///////////////////////////////////////////////////////////////
-        widgets.stackedWidget.setCurrentWidget(widgets.home)
-        widgets.btn_home.setStyleSheet(
-            UIFunctions.selectMenu(widgets.btn_home.styleSheet()))
+        widgets.stackedWidget.setCurrentWidget(widgets.new_page)
+        widgets.btn_new.setStyleSheet(
+            UIFunctions.selectMenu(widgets.btn_new.styleSheet()))
 
         # BUTTONS CLICK
     # Post here your functions for clicked buttons
@@ -73,12 +73,6 @@ class MainWindow(QMainWindow):
         # GET BUTTON CLICKED
         btn = self.sender()
         btnName = btn.objectName()
-
-        # SHOW HOME PAGE
-        if btnName == "btn_home":
-            widgets.stackedWidget.setCurrentWidget(widgets.home)
-            UIFunctions.resetStyle(self, btnName)
-            btn.setStyleSheet(UIFunctions.selectMenu(btn.styleSheet()))
 
         # SHOW WIDGETS PAGE
         if btnName == "btn_widgets":
@@ -97,9 +91,6 @@ class MainWindow(QMainWindow):
 
         if btnName == "btn_save":
             print("Save BTN clicked!")
-
-        # PRINT BTN NAME
-        print(f'Button "{btnName}" pressed!')
 
     # RESIZE EVENTS
     # ///////////////////////////////////////////////////////////////
@@ -120,11 +111,77 @@ class MainWindow(QMainWindow):
             print('Mouse click: LEFT CLICK')
         if event.buttons() == Qt.RightButton:
             print('Mouse click: RIGHT CLICK')
+            
+    def render_group(self, groups: List[Group]):
+        if groups is None:
+            return
+        
+        rows = len(groups) // 4 + 1
+        cols = 4 if len(groups) >= 4 else len(groups)
+        self.ui.scrollAreaWidgetContents_3.setFixedSize(
+            QSize(1280, rows * 320))
+        self.ui.gridLayoutWidget_2.setGeometry(
+            QRect(0, 0, cols * 320, rows * 320))
+
+        for idx, group in enumerate(groups):
+            group_frame = QFrame(self.ui.gridLayoutWidget_2)
+            group_frame.setObjectName(f"group_{group.id}")
+            group_frame.setEnabled(True)
+            group_frame.setMaximumSize(QSize(265, 265))
+            group_frame.setCursor(QCursor(Qt.PointingHandCursor))
+            group_frame.setStyleSheet(u"border: 1px\n"
+                                        "solid #999;\n"
+                                        "border-radius: 3px;\n"
+                                        "background-color: rgb(38, 42, 50);")
+                                        # "background-color: red;")
+                                        
+            group_frame.setFrameShape(QFrame.StyledPanel)
+            group_frame.setFrameShadow(QFrame.Raised)
+            push_btn = QPushButton(group_frame)
+            push_btn.setObjectName(f"pushButton_{group.id}")
+            push_btn.setGeometry(QRect(225, 10, 30, 30))
+            push_btn.setStyleSheet(u"border: none;\n"
+                                            "background-image:\n"
+                                            "url(:/icons/images/icons/cil-options-horizontal.png);\n"
+                                            "background-repeat: none;\n"
+                                            "background-position: center;")
+            group_name_label = QLabel(group_frame)
+            group_name_label.setObjectName(f"name_label_{group.id}")
+            group_name_label.setGeometry(QRect(17, 190, 230, 56))
+            font4 = QFont()
+            font4.setFamilies([u"Segoe UI"])
+            group_name_label.setFont(font4)
+            group_name_label.setMouseTracking(True)
+            group_name_label.setStyleSheet(u"border:\n"
+                                        "none;\n"
+                                        "text-align: center;\n"
+                                        "font-size: 16px;")
+            group_name_label.setTextFormat(Qt.AutoText)
+            group_name_label.setScaledContents(True)
+            group_name_label.setAlignment(Qt.AlignCenter)
+            group_name_label.setToolTip(group.name)
+            group_name_label.setText(QCoreApplication.translate("MainWindow", f"{group.name}"))
+            
+            label_avatar = QLabel(group_frame)
+            label_avatar.setObjectName(f"avatar_{group.id}")
+            label_avatar.setGeometry(QRect(70, 70, 125, 125))
+            label_avatar.setStyleSheet(u"border: none")
+            label_avatar.setPixmap(
+                QPixmap(u":/images/images/images/PyDracula.png"))
+            label_avatar.setScaledContents(True)
+            
+            row = idx // 4
+            col = idx % 4
+            
+            self.ui.gridLayout_3.addWidget(group_frame, row, col, 1, 1)
 
 
 class LoginWindow(QMainWindow):
     def __init__(self) -> None:
         QMainWindow.__init__(self)
+
+        # set window non resizable
+        self.setFixedSize(478, 256)
 
         self.ui = Ui_Login()
         self.ui.setupUi(self)
@@ -141,12 +198,11 @@ class LoginWindow(QMainWindow):
         username = self.ui.lineEdit.text()
         password = self.ui.lineEdit_2.text()
         if username and password:
-            http = HttpHandle()
-            token, error = http.login(username, password)
+            token, error = login_fn(username, password)
             if token is None:
                 self.ui.error_label.setText(error)
             else:
-                widget.currentWidget(main)
+                setupUiMain()
         else:
             self.ui.error_label.setText("Please fill all fields!")
 
@@ -171,14 +227,22 @@ class RegisterWindow(QMainWindow):
         display_name = self.ui.full_name_text.text()
         password = self.ui.password_text.text()
         if username and password and display_name:
-            http = HttpHandle()
-            token, error = http.register(username, password, display_name)
-            if token is None:
+            is_success, error = register_fn(username, password, display_name)
+            if is_success == False and error:
                 self.ui.error_label.setText(error)
             else:
-                widget.currentWidget(login)
+                widget.setCurrentWidget(login)
         else:
             self.ui.error_label.setText("Please fill all fields!")
+
+
+def setupUiMain():
+    widget.addWidget(main)
+    # fetch group
+    groups = Group.fetch_my_group()
+    main.render_group(groups)
+    widget.setCurrentWidget(main)
+    widget.showMaximized()
 
 
 if __name__ == "__main__":
@@ -189,12 +253,16 @@ if __name__ == "__main__":
     main = MainWindow()
     login = LoginWindow()
     register = RegisterWindow()
-
-    widget.addWidget(login)
-    widget.addWidget(main)
-    widget.addWidget(register)
-
-    widget.setCurrentWidget(login)
+    
+    status, error = init_data()
+    if status == True: # if user is logged in
+        setupUiMain()
+        # full max screen
+        
+    else:
+        widget.addWidget(login)
+        widget.addWidget(register)
+        widget.setCurrentWidget(login)
 
     widget.show()
     sys.exit(app.exec())

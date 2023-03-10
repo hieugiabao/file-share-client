@@ -1,5 +1,3 @@
-from core.http.http import HttpHandle
-
 
 class User:
     def __init__(self, id: int, display_name: str, username: str, status: str = None):
@@ -33,6 +31,6 @@ class User:
         return cls(data["id"], data["display_name"], data["username"], data["status"])
     
     @staticmethod
-    def get_by_id(id: int) -> User | None:
-        status, data = HttpHandle.get_user_info(id)
+    def get_by_id(id: int):
+        status, data = get_user_info(id)
         return User.from_dict(data) if status == True and data is not None else None
