@@ -2,7 +2,7 @@ import requests
 from modules.app_settings import Settings
 from typing import List, Tuple
 from functools import wraps
-from core.model.user import User
+# from core.model.user import User
 
 token = ''
 user = None
@@ -501,13 +501,7 @@ def delete_file(id: int):
 
 
 def init_data() -> Tuple[bool, str | None]:
-    global user
     load_token_from_local_cache()
     if token == '':
         return False, 'Token not found'
-    status, data = get_me_info()
-    if status == False:
-        return False, data
-    else:
-        user = User.from_dict(data)
-        return True, None
+    return get_me_info()

@@ -4,8 +4,8 @@ from modules import *
 from widgets import *
 from typing import List
 
-from core.model import Group
-from core.http import login as login_fn, register as register_fn, init_data, user
+from core.model import *
+from core.http import login as login_fn, register as register_fn, logout as logout_fn, init_data
 
 widgets = None
 
@@ -36,7 +36,7 @@ class MainWindow(QMainWindow):
 
         widgets.btn_widgets.clicked.connect(self.buttonClick)
         widgets.btn_new.clicked.connect(self.buttonClick)
-        widgets.btn_save.clicked.connect(self.buttonClick)
+        widgets.btn_exit.clicked.connect(self.buttonClick)
 
         def openCloseLeftBox():
             UIFunctions.toggleLeftBox(self, True)
@@ -46,6 +46,8 @@ class MainWindow(QMainWindow):
         def openCloseRightBox():
             UIFunctions.toggleRightBox(self, True)
         widgets.settingsTopBtn.clicked.connect(openCloseRightBox)
+        
+        widgets.btn_logout.clicked.connect(self.logout)
 
         # self.show()
 
@@ -89,8 +91,9 @@ class MainWindow(QMainWindow):
             btn.setStyleSheet(UIFunctions.selectMenu(
                 btn.styleSheet()))  # SELECT MENU
 
-        if btnName == "btn_save":
-            print("Save BTN clicked!")
+        if btnName == "btn_exit":
+            self.close()
+            app.quit()
 
     # RESIZE EVENTS
     # ///////////////////////////////////////////////////////////////
@@ -119,9 +122,9 @@ class MainWindow(QMainWindow):
         rows = len(groups) // 4 + 1
         cols = 4 if len(groups) >= 4 else len(groups)
         self.ui.scrollAreaWidgetContents_3.setFixedSize(
-            QSize(1280, rows * 320))
+            QSize(1280, rows * 315))
         self.ui.gridLayoutWidget_2.setGeometry(
-            QRect(0, 0, cols * 320, rows * 320))
+            QRect(0, 0, cols * 320, rows * 315))
 
         for idx, group in enumerate(groups):
             group_frame = QFrame(self.ui.gridLayoutWidget_2)
@@ -174,6 +177,22 @@ class MainWindow(QMainWindow):
             col = idx % 4
             
             self.ui.gridLayout_3.addWidget(group_frame, row, col, 1, 1)
+        
+    def remove_group_render(self):
+        for i in reversed(range(self.ui.gridLayout_3.count())):
+            self.ui.gridLayout_3.itemAt(i).widget().setParent(None)
+        
+    def logout(self):
+        status, error = logout_fn()
+        if status:
+            self.remove_group_render()
+            self.hide()
+            self.setParent(None)
+            widget.hide()
+            setupUiLogin()
+        else:
+            print(error)
+            
 
 
 class LoginWindow(QMainWindow):
@@ -195,6 +214,7 @@ class LoginWindow(QMainWindow):
         widget.setCurrentWidget(register)
 
     def login(self):
+        global user
         username = self.ui.lineEdit.text()
         password = self.ui.lineEdit_2.text()
         if username and password:
@@ -202,9 +222,14 @@ class LoginWindow(QMainWindow):
             if token is None:
                 self.ui.error_label.setText(error)
             else:
+                status, data = get_me_info()
+                user = User.from_dict(data) if status else None
+                print(user)
                 setupUiMain()
+                self.ui.error_label.setText("")
         else:
             self.ui.error_label.setText("Please fill all fields!")
+        self.ui.lineEdit_2.setText("")
 
 
 class RegisterWindow(QMainWindow):
@@ -241,9 +266,14 @@ def setupUiMain():
     # fetch group
     groups = Group.fetch_my_group()
     main.render_group(groups)
+    main.ui.btn_user.setText(user.display_name)
     widget.setCurrentWidget(main)
     widget.showMaximized()
 
+
+def setupUiLogin():
+    widget.setCurrentWidget(login)
+    widget.showNormal()
 
 if __name__ == "__main__":
     app = QApplication(sys.argv)
@@ -253,16 +283,16 @@ if __name__ == "__main__":
     main = MainWindow()
     login = LoginWindow()
     register = RegisterWindow()
+    widget.addWidget(login)
+    widget.addWidget(register)
     
-    status, error = init_data()
+    user = None
+    status, data = init_data()
     if status == True: # if user is logged in
+        user = User.from_dict(data)
         setupUiMain()
-        # full max screen
-        
     else:
-        widget.addWidget(login)
-        widget.addWidget(register)
-        widget.setCurrentWidget(login)
+        setupUiLogin()
 
-    widget.show()
+    # widget.show()
     sys.exit(app.exec())

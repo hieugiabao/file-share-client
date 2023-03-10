@@ -898,7 +898,7 @@
                                         url(:/icons/images/icons/cil-people.png);</string>
                   </property>
                   <property name="text">
-                   <string>New</string>
+                   <string>Groups</string>
                   </property>
                  </widget>
                 </item>
@@ -932,47 +932,10 @@
                   </property>
                   <property name="styleSheet">
                    <string notr="true">background-image:
-                                        url(:/icons/images/icons/cil-gamepad.png);</string>
+                                        url(:/icons/images/icons/cil-file.png);</string>
                   </property>
                   <property name="text">
-                   <string>Widgets</string>
-                  </property>
-                 </widget>
-                </item>
-                <item>
-                 <widget class="QPushButton" name="btn_save">
-                  <property name="sizePolicy">
-                   <sizepolicy hsizetype="Expanding" vsizetype="Fixed">
-                    <horstretch>0</horstretch>
-                    <verstretch>0</verstretch>
-                   </sizepolicy>
-                  </property>
-                  <property name="minimumSize">
-                   <size>
-                    <width>0</width>
-                    <height>45</height>
-                   </size>
-                  </property>
-                  <property name="font">
-                   <font>
-                    <family>Segoe UI</family>
-                    <pointsize>10</pointsize>
-                    <italic>false</italic>
-                    <bold>false</bold>
-                   </font>
-                  </property>
-                  <property name="cursor">
-                   <cursorShape>PointingHandCursor</cursorShape>
-                  </property>
-                  <property name="layoutDirection">
-                   <enum>Qt::LeftToRight</enum>
-                  </property>
-                  <property name="styleSheet">
-                   <string notr="true">background-image:
-                                        url(:/icons/images/icons/cil-save.png)</string>
-                  </property>
-                  <property name="text">
-                   <string>Save</string>
+                   <string>Files</string>
                   </property>
                  </widget>
                 </item>
@@ -2232,8 +2195,8 @@ li.checked::marker { content: &quot;\2612&quot;; }
                                      </property>
                                      <property name="icon">
                                       <iconset>
-                                       <normaloff>
-                                                                              :/icons/images/icons/cil-folder-open.png</normaloff>
+                                       <normaloff>../../../../../../.designer/backup/
+                                                                              :/icons/images/icons/cil-folder-open.png</normaloff>../../../../../../.designer/backup/
                                                                               :/icons/images/icons/cil-folder-open.png</iconset>
                                      </property>
                                     </widget>
@@ -2810,7 +2773,7 @@ li.checked::marker { content: &quot;\2612&quot;; }
                           <number>0</number>
                          </property>
                          <item>
-                          <widget class="QPushButton" name="btn_message">
+                          <widget class="QPushButton" name="btn_user">
                            <property name="sizePolicy">
                             <sizepolicy hsizetype="Expanding" vsizetype="Fixed">
                              <horstretch>0</horstretch>
@@ -2838,17 +2801,18 @@ li.checked::marker { content: &quot;\2612&quot;; }
                             <enum>Qt::LeftToRight</enum>
                            </property>
                            <property name="styleSheet">
-                            <string notr="true">
-                                                          background-image:
-                                                          url(:/icons/images/icons/cil-envelope-open.png);</string>
+                            <string notr="true">background-image: url(:/icons/images/icons/cil-user.png);</string>
                            </property>
                            <property name="text">
-                            <string>Message</string>
+                            <string>Username</string>
                            </property>
                           </widget>
                          </item>
                          <item>
-                          <widget class="QPushButton" name="btn_print">
+                          <widget class="QPushButton" name="btn_notification">
+                           <property name="enabled">
+                            <bool>true</bool>
+                           </property>
                            <property name="sizePolicy">
                             <sizepolicy hsizetype="Expanding" vsizetype="Fixed">
                              <horstretch>0</horstretch>
@@ -2872,17 +2836,17 @@ li.checked::marker { content: &quot;\2612&quot;; }
                            <property name="cursor">
                             <cursorShape>PointingHandCursor</cursorShape>
                            </property>
+                           <property name="contextMenuPolicy">
+                            <enum>Qt::DefaultContextMenu</enum>
+                           </property>
                            <property name="layoutDirection">
                             <enum>Qt::LeftToRight</enum>
                            </property>
                            <property name="styleSheet">
-                            <string notr="true">border: none;
-                                                          background-image:
-                                                          url(:/icons/images/icons/options-white.png);
-                                                          background-color: #fff;</string>
+                            <string notr="true">background-image: url(:/icons/images/icons/cil-bell.png);</string>
                            </property>
                            <property name="text">
-                            <string>Print</string>
+                            <string>Notification</string>
                            </property>
                           </widget>
                          </item>
@@ -2925,6 +2889,9 @@ li.checked::marker { content: &quot;\2612&quot;; }
                           </widget>
                          </item>
                         </layout>
+                        <zorder>btn_user</zorder>
+                        <zorder>btn_logout</zorder>
+                        <zorder>btn_notification</zorder>
                        </widget>
                       </item>
                      </layout>

@@ -34,3 +34,8 @@ class User:
     def get_by_id(id: int):
         status, data = get_user_info(id)
         return User.from_dict(data) if status == True and data is not None else None
+    
+    @staticmethod
+    def retrieve_from_token():
+        status, data = get_me_info()
+        return User.from_dict(data) if status == True else None
