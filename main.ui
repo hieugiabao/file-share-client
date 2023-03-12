@@ -6,7 +6,7 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>1299</width>
+    <width>1430</width>
     <height>720</height>
    </rect>
   </property>
@@ -1855,7 +1855,7 @@ li.checked::marker { content: &quot;\2612&quot;; }
                        <string notr="true">background: transparent;</string>
                       </property>
                       <property name="currentIndex">
-                       <number>0</number>
+                       <number>1</number>
                       </property>
                       <widget class="QWidget" name="new_page">
                        <property name="contextMenuPolicy">
@@ -2134,19 +2134,26 @@ li.checked::marker { content: &quot;\2612&quot;; }
                                 <layout class="QVBoxLayout" name="verticalLayout_18">
                                  <item>
                                   <widget class="QLabel" name="labelBoxBlenderInstalation">
+                                   <property name="minimumSize">
+                                    <size>
+                                     <width>0</width>
+                                     <height>30</height>
+                                    </size>
+                                   </property>
                                    <property name="font">
                                     <font>
                                      <family>Segoe UI</family>
-                                     <pointsize>10</pointsize>
+                                     <pointsize>-1</pointsize>
                                      <italic>false</italic>
-                                     <bold>false</bold>
+                                     <bold>true</bold>
                                     </font>
                                    </property>
                                    <property name="styleSheet">
-                                    <string notr="true"/>
+                                    <string notr="true">font-size: 20px;
+font-weight: bold;</string>
                                    </property>
                                    <property name="text">
-                                    <string>FILE BOX</string>
+                                    <string/>
                                    </property>
                                   </widget>
                                  </item>
@@ -2167,7 +2174,7 @@ li.checked::marker { content: &quot;\2612&quot;; }
                                    <property name="bottomMargin">
                                     <number>0</number>
                                    </property>
-                                   <item row="0" column="1">
+                                   <item row="1" column="2">
                                     <widget class="QPushButton" name="pushButton">
                                      <property name="minimumSize">
                                       <size>
@@ -2184,14 +2191,13 @@ li.checked::marker { content: &quot;\2612&quot;; }
                                       </font>
                                      </property>
                                      <property name="cursor">
-                                      <cursorShape>ArrowCursor</cursorShape>
+                                      <cursorShape>PointingHandCursor</cursorShape>
                                      </property>
                                      <property name="styleSheet">
-                                      <string notr="true">background-color:
-                                                                              rgb(52, 59, 72);</string>
+                                      <string notr="true">background-color: rgb(52, 59, 72);</string>
                                      </property>
                                      <property name="text">
-                                      <string>Open</string>
+                                      <string>Upload file</string>
                                      </property>
                                      <property name="icon">
                                       <iconset>
@@ -2201,21 +2207,39 @@ li.checked::marker { content: &quot;\2612&quot;; }
                                      </property>
                                     </widget>
                                    </item>
-                                   <item row="2" column="0" colspan="2">
+                                   <item row="1" column="1">
+                                    <widget class="QPushButton" name="pushButton_2">
+                                     <property name="minimumSize">
+                                      <size>
+                                       <width>150</width>
+                                       <height>30</height>
+                                      </size>
+                                     </property>
+                                     <property name="cursor">
+                                      <cursorShape>PointingHandCursor</cursorShape>
+                                     </property>
+                                     <property name="styleSheet">
+                                      <string notr="true">background-color: rgb(52, 59, 72);</string>
+                                     </property>
+                                     <property name="text">
+                                      <string>Create directory</string>
+                                     </property>
+                                    </widget>
+                                   </item>
+                                   <item row="4" column="0" colspan="3">
                                     <widget class="QLabel" name="labelVersion_3">
                                      <property name="styleSheet">
-                                      <string notr="true">color:
-                                                                              rgb(113, 126, 149);</string>
+                                      <string notr="true">color: red;</string>
                                      </property>
                                      <property name="lineWidth">
                                       <number>1</number>
                                      </property>
                                      <property name="text">
-                                      <string>Choose file here</string>
+                                      <string/>
                                      </property>
                                     </widget>
                                    </item>
-                                   <item row="0" column="0">
+                                   <item row="1" column="0">
                                     <widget class="QLineEdit" name="lineEdit">
                                      <property name="minimumSize">
                                       <size>
@@ -2232,6 +2256,22 @@ li.checked::marker { content: &quot;\2612&quot;; }
                                      </property>
                                      <property name="placeholderText">
                                       <string>Type here</string>
+                                     </property>
+                                    </widget>
+                                   </item>
+                                   <item row="1" column="3">
+                                    <widget class="QPushButton" name="pushButton_5">
+                                     <property name="minimumSize">
+                                      <size>
+                                       <width>100</width>
+                                       <height>30</height>
+                                      </size>
+                                     </property>
+                                     <property name="styleSheet">
+                                      <string notr="true">background-color: rgb(52, 59, 72);</string>
+                                     </property>
+                                     <property name="text">
+                                      <string>Choose file</string>
                                      </property>
                                     </widget>
                                    </item>
@@ -2450,6 +2490,9 @@ li.checked::marker { content: &quot;\2612&quot;; }
                                </disabled>
                               </palette>
                              </property>
+                             <property name="styleSheet">
+                              <string notr="true">font-size: 18px;</string>
+                             </property>
                              <property name="frameShape">
                               <enum>QFrame::NoFrame</enum>
                              </property>
@@ -2501,131 +2544,36 @@ li.checked::marker { content: &quot;\2612&quot;; }
                              <attribute name="verticalHeaderStretchLastSection">
                               <bool>true</bool>
                              </attribute>
-                             <row>
-                              <property name="text">
-                               <string>New Row</string>
-                              </property>
-                              <property name="font">
-                               <font>
-                                <family>Segoe UI</family>
-                               </font>
-                              </property>
-                             </row>
-                             <row>
-                              <property name="text">
-                               <string>New Row</string>
-                              </property>
-                             </row>
-                             <row>
-                              <property name="text">
-                               <string>New Row</string>
-                              </property>
-                             </row>
-                             <row>
-                              <property name="text">
-                               <string>New Row</string>
-                              </property>
-                             </row>
-                             <row>
-                              <property name="text">
-                               <string>New Row</string>
-                              </property>
-                             </row>
-                             <row>
-                              <property name="text">
-                               <string>New Row</string>
-                              </property>
-                             </row>
-                             <row>
-                              <property name="text">
-                               <string>New Row</string>
-                              </property>
-                             </row>
-                             <row>
-                              <property name="text">
-                               <string>New Row</string>
-                              </property>
-                             </row>
-                             <row>
-                              <property name="text">
-                               <string>New Row</string>
-                              </property>
-                             </row>
-                             <row>
-                              <property name="text">
-                               <string>New Row</string>
-                              </property>
-                             </row>
-                             <row>
-                              <property name="text">
-                               <string>New Row</string>
-                              </property>
-                             </row>
-                             <row>
-                              <property name="text">
-                               <string>New Row</string>
-                              </property>
-                             </row>
-                             <row>
-                              <property name="text">
-                               <string>New Row</string>
-                              </property>
-                             </row>
-                             <row>
-                              <property name="text">
-                               <string>New Row</string>
-                              </property>
-                             </row>
-                             <row>
-                              <property name="text">
-                               <string>New Row</string>
-                              </property>
-                             </row>
-                             <row>
-                              <property name="text">
-                               <string>New Row</string>
-                              </property>
-                             </row>
                              <column>
                               <property name="text">
-                               <string>0</string>
+                               <string>name</string>
                               </property>
                              </column>
                              <column>
                               <property name="text">
-                               <string>1</string>
+                               <string>size</string>
                               </property>
                              </column>
                              <column>
                               <property name="text">
-                               <string>2</string>
+                               <string>owner</string>
                               </property>
                              </column>
                              <column>
                               <property name="text">
-                               <string>3</string>
+                               <string>modify by</string>
                               </property>
                              </column>
-                             <item row="0" column="0">
+                             <column>
                               <property name="text">
-                               <string>Test</string>
+                               <string>created_at</string>
                               </property>
-                             </item>
-                             <item row="0" column="1">
+                             </column>
+                             <column>
                               <property name="text">
-                               <string>Text</string>
+                               <string>updated_at</string>
                               </property>
-                             </item>
-                             <item row="0" column="2">
-                              <property name="text">
-                               <string>Cell</string>
-                              </property>
-                             </item>
-                             <item row="0" column="3">
-                              <property name="text">
-                               <string>Line</string>
-                              </property>
-                             </item>
+                             </column>
                             </widget>
                            </item>
                           </layout>

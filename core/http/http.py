@@ -1,7 +1,9 @@
 import requests
+import urllib.parse
 from modules.app_settings import Settings
 from typing import List, Tuple
 from functools import wraps
+import os
 # from core.model.user import User
 
 token = ''
@@ -27,6 +29,10 @@ def token_expried():
 
 
 def store_token_in_local_cache(token: str):
+    # check if cache folder exists
+    if not os.path.exists(Settings.TOKEN_CACHE_FOLDER):
+        os.makedirs(Settings.TOKEN_CACHE_FOLDER)
+
     with open(Settings.TOKEN_CACHE_FILE, 'w+') as f:
         f.write(token)
 
@@ -185,9 +191,11 @@ def get_group_file_node(id: int):
 def create_group(data: dict):
     url = Settings.SERVER_ORIGIN + '/group/create'
     headers = {
-        'Authorization': 'Basic ' + token
+        'Authorization': 'Basic ' + token,
+        'Content-Type': 'application/x-www-form-urlencoded'
     }
-    response = requests.post(url, data=data, headers=headers)
+    data_str = urllib.parse.urlencode(data, safe='/', encoding='utf-8')
+    response = requests.post(url, data=data_str, headers=headers)
     if response.status_code == 200:
 
         return True, response.json()
@@ -222,7 +230,8 @@ def update_group(data: dict):
 def delete_group(data: dict):
     url = Settings.SERVER_ORIGIN + '/group/delete'
     headers = {
-        'Authorization': 'Basic ' + token
+        'Authorization': 'Basic ' + token,
+        'Content-Type': 'application/x-www-form-urlencoded'
     }
     response = requests.delete(url, data=data, headers=headers)
     if response.status_code == 200:
@@ -331,7 +340,7 @@ def get_directory_info(id: int):
     headers = {
         'Authorization': 'Basic ' + token
     }
-    response = requests.post(url, params=data, headers=headers)
+    response = requests.get(url, params=data, headers=headers)
     if response.status_code == 200:
         return True, response.json()
     elif response.status_code == 401:
@@ -349,11 +358,13 @@ def get_directory_info(id: int):
 def create_directory(data: dict):
     url = Settings.SERVER_ORIGIN + '/directory/create'
     headers = {
-        'Authorization': 'Basic ' + token
+        'Authorization': 'Basic ' + token,
+        'Content-Type': 'application/x-www-form-urlencoded'
     }
-    response = requests.post(url, data=data, headers=headers)
+    data_str = urllib.parse.urlencode(data, safe='/', encoding='utf-8')
+    response = requests.post(url, data=data_str, headers=headers)
     if response.status_code == 200:
-        return True, None
+        return True, response.json()
     elif response.status_code == 401:
         token_expried()
         return False, 'Token Expired'
@@ -398,7 +409,8 @@ def delete_directory(id: int):
         'directory_id': id
     }
     headers = {
-        'Authorization': 'Basic ' + token
+        'Authorization': 'Basic ' + token,
+        'Content-Type': 'application/x-www-form-urlencoded'
     }
     response = requests.delete(url, data=data, headers=headers)
     if response.status_code == 200:
@@ -441,9 +453,12 @@ def get_file_info(id: int):
 def create_file(data: dict):
     url = Settings.SERVER_ORIGIN + '/file/create'
     headers = {
-        'Authorization': 'Basic ' + token
+        'Authorization': 'Basic ' + token,
+        'Content-Type': 'application/x-www-form-urlencoded'
     }
-    response = requests.post(url, data=data, headers=headers)
+    data_str = urllib.parse.urlencode(data, safe='/', encoding='utf-8')
+    response = requests.post(url, data=data_str, headers=headers)
+    print(response.status_code)
     if response.status_code == 200:
         return True, response.json()
     elif response.status_code == 401:
@@ -451,6 +466,31 @@ def create_file(data: dict):
         return False, 'Token Expired'
     elif response.status_code == 403:
         return False, 'You are not the permission to create file here'
+    elif response.status_code == 404:
+        return False, 'Group or directory not found'
+    elif response.status_code == 409:
+        return False, 'File name already exists'
+    else:
+        return False, 'Something went wrong'
+
+
+@is_authorized
+def save_file(data: dict):
+    url = Settings.SERVER_ORIGIN + '/file/save'
+    headers = {
+        'Authorization': 'Basic ' + token,
+        'Content-Type': 'application/x-www-form-urlencoded'
+    }
+    data_str = urllib.parse.urlencode(data, safe='/', encoding='utf-8')
+    response = requests.post(url, data=data_str, headers=headers)
+    print(response.status_code)
+    if response.status_code == 200:
+        return True, response.json()
+    elif response.status_code == 401:
+        token_expried()
+        return False, 'Token Expired'
+    elif response.status_code == 400:
+        return False, 'Unknown error'
     elif response.status_code == 404:
         return False, 'Group or directory not found'
     else:
@@ -481,7 +521,8 @@ def update_file(data: dict):
 def delete_file(id: int):
     url = Settings.SERVER_ORIGIN + '/file/delete'
     headers = {
-        'Authorization': 'Basic ' + token
+        'Authorization': 'Basic ' + token,
+        'Content-Type': 'application/x-www-form-urlencoded'
     }
     data = {
         'file_id': id

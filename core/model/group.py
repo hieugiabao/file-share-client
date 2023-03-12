@@ -1,5 +1,7 @@
 from typing import List
-from core.http import get_group_info, get_me_group
+from core.http import get_group_info, get_me_group, get_group_file_node
+from .directory import Directory
+from .file import File
 
 class Group:
     def __init__(self, id: int, name: str, description: str, code: str, owner_id: int, avatar: str, created_at: str, status: str = None):
@@ -12,6 +14,7 @@ class Group:
         self.created_at = created_at
         self.status = status
         self._owner = None
+        self._nodes = None
 
     def __str__(self):
         return f"Group(id={self.id}, name={self.name}, description={self.description}, code={self.code}, owner_id={self.owner_id}, avatar={self.avatar}, status={self.status})"
@@ -35,3 +38,12 @@ class Group:
     def fetch_my_group():
         status, data = get_me_group()
         return [Group.from_dict(group) for group in data] if status else []
+    
+    @property    
+    def nodes(self):
+        if self._nodes is None:    
+            status, data = get_group_file_node(self.id)
+            self._nodes = [
+                Directory.from_dict(node['node']) if node['type'] == 'directory' else File.from_dict(node['node']) for node in data
+            ] if status else []
+        return self._nodes

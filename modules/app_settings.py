@@ -1,4 +1,5 @@
 from sys import platform
+import os
 
 class Settings:
     # APP SETTINGS
@@ -22,8 +23,15 @@ class Settings:
     # SERVER ORIGIN
     SERVER_ORIGIN = 'http://localhost:8000'
     if platform == 'win32':
+        TOKEN_CACHE_FOLDER = 'C:\\Users\\%s\\.fileshare' % os.getlogin()
         TOKEN_CACHE_FILE = 'C:\\Users\\%s\\.fileshare\\token.txt' % os.getlogin()
     elif platform == 'linux' or platform == 'linux2':
-        TOKEN_CACHE_FILE = '/home/hieu/.fileshare/token.txt'
+        TOKEN_CACHE_FOLDER = '/home/%s/.fileshare' % os.getlogin()
+        TOKEN_CACHE_FILE =  '/home/%s/.fileshare/token.txt' % os.getlogin() 
     else:
         TOKEN_CACHE_FILE = 'token.txt'
+        
+    FILE_HOST = '127.0.0.1'
+    FILE_PORT = 8069
+    BLOCKSIZE = 2048
+    WINDOWSIZE = 1

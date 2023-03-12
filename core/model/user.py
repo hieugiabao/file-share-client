@@ -1,3 +1,4 @@
+from core.http import get_user_info, get_me_info
 
 class User:
     def __init__(self, id: int, display_name: str, username: str, status: str = None):
@@ -33,7 +34,7 @@ class User:
     @staticmethod
     def get_by_id(id: int):
         status, data = get_user_info(id)
-        return User.from_dict(data) if status == True and data is not None else None
+        return User.from_dict(data) if status else None
     
     @staticmethod
     def retrieve_from_token():

@@ -1,6 +1,10 @@
+from .user import User
+from core.http import create_file, save_file, delete_file, update_file
+
 
 class File:
-    def __init__(self, name: str, path: str, size: int, permission: int, created_at: str, updated_at: str, owner_id: int, group_id: int, modify_by: int, directory_id: int = None):
+    def __init__(self, id: int, name: str, path: str, size: int, permission: int, created_at: str, updated_at: str, owner_id: int, group_id: int, modify_by: int, directory_id: int = None):
+        self.id = id
         self.name = name
         self.path = path
         self.size = size
@@ -17,7 +21,7 @@ class File:
         self._directory = None
 
     def __str__(self):
-        return self.name
+        return f'File(name={self.name}, path={self.path}, size={self.size}, permission={self.permission}, created_at={self.created_at}, updated_at={self.updated_at}, owner_id={self.owner_id}, group_id={self.group_id}, modify_by={self.modify_by}, directory_id={self.directory_id})'
 
     @property
     def owner(self):
@@ -40,5 +44,35 @@ class File:
     @property
     def modified_by(self):
         if self._modify_by is None:
-            self._modify_by = User.get_by_id(self.modified_by)
+            self._modify_by = User.get_by_id(self.modify_by)
         return self._modify_by
+
+    @classmethod
+    def from_dict(cls, data: dict):
+        return cls(data['id'], data["name"], data["path"], data["size"], data["permission"], data["created_at"], data["updated_at"], data["owner_id"], data["group_id"], data["modified_by"], data["directory_id"])
+
+    @staticmethod
+    def create_file(data: dict):
+        status, res = create_file(data)
+        if status:
+            return True, res['path']
+        else:
+            return False, res
+
+    @staticmethod
+    def save_file(data: dict):
+        status, res = save_file(data)
+        if status:
+            return True, File.from_dict(res)
+        else:
+            return False, res
+
+    @staticmethod
+    def delete_one(id: int):
+        return delete_file(id)
+
+    def update_permission(id: int, permission: int):
+        return update_file({
+            'file_id': id,
+            'permission': permission
+        })
