@@ -52,6 +52,7 @@ class MainWindow(QMainWindow):
         widgets.btn_logout.clicked.connect(self.logout)
         widgets.pushButton_2.clicked.connect(self.create_directory)
         widgets.pushButton_5.clicked.connect(self.choose_file)
+        widgets.pushButton_3.clicked.connect(self.show_popup)
         widgets.pushButton.clicked.connect(self.upload_file)
 
         # self.show()
@@ -79,6 +80,7 @@ class MainWindow(QMainWindow):
         self.directory_choosen = None
         self.file_choosen = None
         self.file = None
+        self.groups = None
 
         self.setup_right_menu()
 
@@ -135,16 +137,17 @@ class MainWindow(QMainWindow):
     def render_group(self, groups: List[Group]):
         if groups is None:
             return
+        self.groups = groups
         self.group_choosen = groups[0] if len(groups) > 0 else None
 
-        rows = len(groups) // 4 + 1
+        rows = (len(groups) - 1) // 4 + 1
         cols = 4 if len(groups) >= 4 else len(groups)
         self.ui.scrollAreaWidgetContents_3.setFixedSize(
             QSize(1280, rows * 315))
         self.ui.gridLayoutWidget_2.setGeometry(
             QRect(0, 0, cols * 320, rows * 315))
 
-        for idx, group in enumerate(groups):
+        for idx, group in enumerate(self.groups):
             group_btn = QPushButton(self.ui.gridLayoutWidget_2)
             group_btn.setObjectName(f"groupbtn_{group.id}")
             group_btn.setEnabled(True)
@@ -171,6 +174,7 @@ class MainWindow(QMainWindow):
                                    "url(:/icons/images/icons/cil-options-horizontal.png);\n"
                                    "background-repeat: none;\n"
                                    "background-position: center;")
+            push_btn.pressed.connect(lambda val=group: self.show_menu_option_group(val))
             group_name_label = QLabel(group_frame)
             group_name_label.setObjectName(f"name_label_{group.id}")
             group_name_label.setGeometry(QRect(17, 190, 230, 56))
@@ -460,7 +464,7 @@ class MainWindow(QMainWindow):
         menu = QMenu(widgets.tableWidget)
         row = widgets.tableWidget.rowAt(pos.y())
 
-        if row < self.offset or row == self.offset + len(self.nodes) - 1:
+        if row < self.offset or row == self.offset + len(self.nodes):
             return
 
         if row < len(self.directories) + self.offset:
@@ -493,14 +497,14 @@ class MainWindow(QMainWindow):
                     lambda: self.delete_file_action(file))
                 menu.addAction(delete_action)
 
-                icon2 = QIcon()
-                icon2.addFile(u":/icons/images/icons/cil-share.png",
-                              QSize(), QIcon.Active, QIcon.Off)
-                change_permission_action = QAction(icon2, "Change permission to " + (
-                    'read' if file.permission == 2 else 'write'), widgets.tableWidget)
-                change_permission_action.triggered.connect(
-                    lambda: self.change_file_permission_action(file))
-                menu.addAction(change_permission_action)
+                # icon2 = QIcon()
+                # icon2.addFile(u":/icons/images/icons/cil-share.png",
+                #               QSize(), QIcon.Active, QIcon.Off)
+                # change_permission_action = QAction(icon2, "Change permission to " + (
+                #     'read' if file.permission == 2 else 'write'), widgets.tableWidget)
+                # change_permission_action.triggered.connect(
+                #     lambda: self.change_file_permission_action(file))
+                # menu.addAction(change_permission_action)
 
                 icon3 = QIcon()
                 icon3.addFile(u":/icons/images/icons/cil-cloud-download.png",
@@ -528,7 +532,13 @@ class MainWindow(QMainWindow):
             widgets.labelVersion_3.setText(error)
 
     def change_dir_permission_action(self, directory):
-        print(directory)
+        status, error = Directory.update_permission(directory.id, 1 if directory.permission == 2 else 2)
+        if status:
+            directory.permission = 1 if directory.permission == 2 else 2
+            widgets.labelVersion_3.setText('')
+            self.rerender_file_list(self.nodes, self.directory_choosen)
+        else:
+            widgets.labelVersion_3.setText(error)
 
     def change_file_permission_action(self, file):
         print(file)
@@ -567,7 +577,61 @@ class MainWindow(QMainWindow):
         except Exception as e:
             print(e)
             widgets.labelVersion_3.setText("Error while downloading file")
+            
+    def show_popup(self):
+        dialog = MyPopup(main)
+        dialog.exec()
+        
+    def show_menu_option_group(self, group):
+        menu = QMenu()
+        copy_action = QAction("Copy code", widgets.tableWidget)
+        copy_action.triggered.connect(lambda: self.copy_code(group))
+        menu.addAction(copy_action)
+        menu.exec(QCursor.pos())
 
+    def copy_code(self, group):
+        clipboard = QApplication.clipboard()
+        clipboard.setText(group.code)
+        
+class MyPopup(QDialog):
+    def __init__(self, main):
+        QDialog.__init__(self)
+
+        self.ui = Ui_GroupAction()
+        self.ui.setupUi(self)
+        self.main = main
+        
+        self.setWindowTitle("Group action")
+        
+        self.ui.pushButton_3.clicked.connect(self.group_create)
+        self.ui.pushButton_4.clicked.connect(self.join_group)
+        
+    def group_create(self):
+        name = self.ui.lineEdit_2.text()
+        if name:
+            status, group = Group.create(name)
+            if status:
+                self.main.groups.append(group)
+                self.main.render_group(self.main.groups)
+                self.close()
+            else:
+                self.ui.error_label.setText(group)
+        else:
+            self.ui.error_label.setText("Name cannot be empty")
+
+    def join_group(self):
+        print('joining')
+        code = self.ui.lineEdit.text()
+        if code:
+            status, group = Group.join(code)
+            if status:
+                self.main.groups.append(group)
+                self.main.render_group(self.main.groups)
+                self.close()
+            else:
+                self.ui.error_label.setText(group)
+        else:
+            self.ui.error_label.setText("Code cannot be empty")
 
 class LoginWindow(QMainWindow):
     def __init__(self) -> None:

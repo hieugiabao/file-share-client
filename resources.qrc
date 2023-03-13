@@ -2,6 +2,8 @@
   <qresource prefix="images">
     <file>images/images/PyDracula.png</file>
     <file>images/images/PyDracula_vertical.png</file>
+    <file>images/images/create.svg</file>
+    <file>images/images/join.svg</file>
   </qresource>
   <qresource prefix="icons">
     <file>images/icons/cil-3d.png</file>

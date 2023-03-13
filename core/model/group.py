@@ -1,5 +1,5 @@
 from typing import List
-from core.http import get_group_info, get_me_group, get_group_file_node
+from core.http import get_group_info, get_me_group, get_group_file_node, create_group, join_group
 from .directory import Directory
 from .file import File
 
@@ -47,3 +47,19 @@ class Group:
                 Directory.from_dict(node['node']) if node['type'] == 'directory' else File.from_dict(node['node']) for node in data
             ] if status else []
         return self._nodes
+    
+    @staticmethod
+    def create(name: str):
+        if not name:
+            return Fasle, None
+        status, data = create_group({
+            'name': name
+        })
+        return (True, Group.from_dict(data)) if status else (False, data)
+
+    @staticmethod
+    def join(code):
+        if not code:
+            return Fasle, None
+        status, data = join_group(code)
+        return (True, Group.from_dict(data)) if status else (False, data)

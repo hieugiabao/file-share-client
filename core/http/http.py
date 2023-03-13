@@ -1,3 +1,4 @@
+import logging
 import requests
 import urllib.parse
 from modules.app_settings import Settings
@@ -9,6 +10,23 @@ import os
 token = ''
 user = None
 
+
+# These two lines enable debugging at httplib level (requests->urllib3->http.client)
+# You will see the REQUEST, including HEADERS and DATA, and RESPONSE with HEADERS but without DATA.
+# The only thing missing will be the response.body which is not logged.
+try:
+    import http.client as http_client
+except ImportError:
+    # Python 2
+    import httplib as http_client
+http_client.HTTPConnection.debuglevel = 1
+
+# You must initialize logging, otherwise you'll not see debug output.
+logging.basicConfig()
+logging.getLogger().setLevel(logging.DEBUG)
+requests_log = logging.getLogger("requests.packages.urllib3")
+requests_log.setLevel(logging.DEBUG)
+requests_log.propagate = True
 
 def is_authorized(func):
     @wraps(func)
@@ -194,7 +212,9 @@ def create_group(data: dict):
         'Authorization': 'Basic ' + token,
         'Content-Type': 'application/x-www-form-urlencoded'
     }
+    # accept black space in group name
     data_str = urllib.parse.urlencode(data, safe='/', encoding='utf-8')
+    data_str = data_str.replace('+', ' ')
     response = requests.post(url, data=data_str, headers=headers)
     if response.status_code == 200:
 
@@ -386,9 +406,11 @@ def update_directory(id: int, permission: int):
         'permission': permission
     }
     headers = {
-        'Authorization': 'Basic ' + token
+        'Authorization': 'Basic ' + token,
+        'Content-Type': 'application/x-www-form-urlencoded'
     }
-    response = requests.post(url, data=data, headers=headers)
+    data_str = urllib.parse.urlencode(data, safe='/', encoding='utf-8')
+    response = requests.put(url, data=data_str, headers=headers)
     if response.status_code == 200:
         return True, None
     elif response.status_code == 401:
@@ -458,7 +480,6 @@ def create_file(data: dict):
     }
     data_str = urllib.parse.urlencode(data, safe='/', encoding='utf-8')
     response = requests.post(url, data=data_str, headers=headers)
-    print(response.status_code)
     if response.status_code == 200:
         return True, response.json()
     elif response.status_code == 401:
@@ -481,9 +502,8 @@ def save_file(data: dict):
         'Authorization': 'Basic ' + token,
         'Content-Type': 'application/x-www-form-urlencoded'
     }
-    data_str = urllib.parse.urlencode(data, safe='/', encoding='utf-8')
-    response = requests.post(url, data=data_str, headers=headers)
-    print(response.status_code)
+    data_str = urllib.parse.urlencode(data, safe='/')
+    response = requests.post(url, data=data_str.encode('utf-8'), headers=headers)
     if response.status_code == 200:
         return True, response.json()
     elif response.status_code == 401:
