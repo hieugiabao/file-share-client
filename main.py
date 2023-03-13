@@ -464,7 +464,7 @@ class MainWindow(QMainWindow):
         menu = QMenu(widgets.tableWidget)
         row = widgets.tableWidget.rowAt(pos.y())
 
-        if row < self.offset or row == self.offset + len(self.nodes):
+        if row < self.offset:
             return
 
         if row < len(self.directories) + self.offset:
@@ -506,14 +506,14 @@ class MainWindow(QMainWindow):
                 #     lambda: self.change_file_permission_action(file))
                 # menu.addAction(change_permission_action)
 
-                icon3 = QIcon()
-                icon3.addFile(u":/icons/images/icons/cil-cloud-download.png",
-                              QSize(), QIcon.Active, QIcon.Off)
-                download_action = QAction(
-                    icon3, "Download", widgets.tableWidget)
-                download_action.triggered.connect(
-                    lambda: self.download_file_action(file))
-                menu.addAction(download_action)
+            icon3 = QIcon()
+            icon3.addFile(u":/icons/images/icons/cil-cloud-download.png",
+                            QSize(), QIcon.Active, QIcon.Off)
+            download_action = QAction(
+                icon3, "Download", widgets.tableWidget)
+            download_action.triggered.connect(
+                lambda: self.download_file_action(file))
+            menu.addAction(download_action)
 
         menu.exec(QCursor.pos())
 
